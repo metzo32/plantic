@@ -1,0 +1,91 @@
+
+/* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4caf50; /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바 모서리 둥글게 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* 스크롤 트랙의 배경색 */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin; /* 스크롤바 너비 */
+  scrollbar-color: #4caf50 #f1f1f1; /* 스크롤바 색상(thumb)과 배경색(track) */
+}
+
+.border-green {
+  @apply border border-custom500;
+}
+
+.text-basic {
+  @apply text-lg text-custom500;
+}
+
+.button {
+  @apply border border-custom500 text-custom500 rounded-full px-8 py-1 mr-1
+  hover:bg-custom700
+  hover:border-custom700
+  hover:text-custom50;
+}
+
+.header-button {
+  @apply text-basic
+  hover:text-custom700;
+}
+
+.button-clicked {
+  @apply bg-custom700 border-custom700 text-custom50;
+}
+
+.h1 {
+  @apply text-custom500;
+}
+
+.h2 {
+  @apply text-custom500 font-bold text-3xl;
+}
+
+.h3 {
+  @apply text-custom500;
+}
+
+.h4 {
+  @apply text-custom300;
+}
+
+.title {
+  @apply text-custom500 font-bold text-8xl;
+}
+
+.card-image {
+  @apply w-full aspect-[1/1] object-cover rounded-[5%];
+}
+
+.hr {
+  @apply border-custom500 my-4;
+}
+
+.input-container {
+  @apply relative;
+}
+
+.card-container {
+  @apply w-full border-t border-custom300 bg-custom50 flex flex-col mt-10
+  hover:scale-[102%] transition-transform duration-300 ease-in-out
+  cursor-pointer;
+}
+
+.input-focus {
+  @apply focus:border-custom700
+  focus:outline-none 
+  focus:ring-1
+  focus:ring-custom700
+  focus:text-custom700;
+}
