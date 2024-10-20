@@ -3,15 +3,21 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import GardenList from "./components/GardenList";
 
-
 function App() {
-  
   return (
-    <div className="overflow-x-hidden w-screen h-screen p-8 bg-custom50 ">
-      <div className="h-full border-green rounded-3xl p-8 overflow-y-auto">
+    <div
+      className="min-w-[256px] overflow-x-hidden w-screen h-screen bg-custom50 
+      p-5 
+      sm:p-8"
+    >
+      <div
+        className="overflow-x-hidden h-full border-green rounded-3xl overflow-y-auto
+       p-4 
+       sm:p-8"
+      >
         <Header />
         <Content />
-        <GardenList/>
+        <GardenList />
       </div>
     </div>
   );

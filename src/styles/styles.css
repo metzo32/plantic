@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+/* 한글에만 Nanum Gothic 적용 */
+html {
+  font-family: "Nunito Sans", sans-serif;
+}
 
 /* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
@@ -17,6 +23,7 @@
 /* Firefox */
 * {
   scrollbar-width: thin; /* 스크롤바 너비 */
+  scrollbar-height: 80%;
   scrollbar-color: #4caf50 #f1f1f1; /* 스크롤바 색상(thumb)과 배경색(track) */
 }
 
@@ -29,15 +36,27 @@
 }
 
 .button {
-  @apply border border-custom500 text-custom500 rounded-full px-8 py-1 mr-1
-  hover:bg-custom700
-  hover:border-custom700
-  hover:text-custom50;
+  @apply border border-custom500 text-custom500 rounded-full py-1 mr-1 
+  whitespace-nowrap
+  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+  transition-colors duration-300 ease-in-out
+
+  px-4 
+  md:px-6
+  lg:px-8;
+}
+
+.button-menu {
+  @apply border border-custom500 text-custom500 rounded-full
+  w-[46px] h-[46px] ml-1
+  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+  transition-colors duration-300 ease-in-out;
 }
 
 .header-button {
   @apply text-basic
-  hover:text-custom700;
+  hover:text-custom700
+  transition-colors duration-300 ease-in-out;
 }
 
 .button-clicked {
@@ -61,7 +80,10 @@
 }
 
 .title {
-  @apply text-custom500 font-bold text-8xl;
+  @apply text-custom500 font-bold tracking-tight
+  text-6xl
+  sm:text-8xl
+  lg:text-9xl
 }
 
 .card-image {
@@ -69,7 +91,13 @@
 }
 
 .hr {
-  @apply border-custom500 my-4;
+  @apply border-custom500 
+  my-2
+  md:my-4;
+}
+
+.header {
+  @apply border-green rounded-full h-[46px] bg-transparent text-basic justify-between items-center py-2 px-8;
 }
 
 .input-container {
