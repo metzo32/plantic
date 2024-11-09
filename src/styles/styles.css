@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+/* 한글에만 Nanum Gothic 적용 */
+html {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4caf50; /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바 모서리 둥글게 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* 스크롤 트랙의 배경색 */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin; /* 스크롤바 너비 */
+  scrollbar-height: 80%;
+  scrollbar-color: #4caf50 #f1f1f1; /* 스크롤바 색상(thumb)과 배경색(track) */
+}
+
+.wrapper {
+  @apply min-w-[256px] w-screen h-screen p-5
+  bg-custom50
+  overflow-x-hidden 
+  sm:p-8
+}
+
+.page-container {
+  @apply h-full p-4
+  border-green rounded-3xl
+
+  overflow-x-hidden  overflow-y-auto
+  sm:p-8
+}
+
+.border-green {
+  @apply border border-custom500;
+}
+
+.text-basic {
+  @apply text-lg text-custom500;
+}
+
+.button {
+  @apply border border-custom500 text-custom500 rounded-full py-1 mr-1 
+  whitespace-nowrap
+  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+  transition-colors duration-300 ease-in-out
+
+  px-4 
+  md:px-6
+  lg:px-8;
+}
+
+.button-menu {
+  @apply border border-custom500 text-custom500 rounded-full
+  w-[46px] h-[46px] ml-1
+  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+  transition-colors duration-300 ease-in-out;
+}
+
+.header-button {
+  @apply text-basic
+  hover:text-custom700
+  transition-colors duration-300 ease-in-out;
+}
+
+.button-clicked {
+  @apply bg-custom700 border-custom700 text-custom50;
+}
+
+.h1 {
+  @apply text-custom500;
+}
+
+.h2 {
+  @apply text-custom500 font-bold text-3xl;
+}
+
+.h3 {
+  @apply text-custom500;
+}
+
+.h4 {
+  @apply text-custom300;
+}
+
+.title {
+  @apply text-custom500 font-bold tracking-tight
+  text-6xl
+  sm:text-8xl
+  lg:text-9xl
+}
+
+.card-image {
+  @apply w-full aspect-[1/1] object-cover rounded-[5%];
+}
+
+.hr {
+  @apply border-custom500 
+  my-2
+  md:my-4;
+}
+
+.header {
+  @apply border-green rounded-full h-[46px] bg-transparent text-basic justify-between items-center py-2 px-8;
+}
+
+.input-container {
+  @apply relative;
+}
+
+.card-container {
+  @apply w-full border-t border-custom300 bg-custom50 flex flex-col mt-10
+  hover:scale-[102%] transition-transform duration-300 ease-in-out
+  cursor-pointer;
+}
+
+.input-focus {
+  @apply focus:border-custom700
+  focus:outline-none 
+  focus:ring-1
+  focus:ring-custom700
+  focus:text-custom700;
+}
