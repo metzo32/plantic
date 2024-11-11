@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
+import Cards from "./Cards/Cards";
 
 interface GardenItem {
-  cntntsNo: string;
+  familyKorNm: string;
   cntntsSj: string;
   rnum: number;
+  imgUrl: string;
+  plantGnrlNm: string;
 }
 
 const GardenList = () => {
@@ -17,18 +20,26 @@ const GardenList = () => {
     const fetchGardenList = async () => {
       try {
         const apiKey = process.env.REACT_APP_API_KEY;
-        const response = await axios.get(`http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&pageNo=1&numOfRows=50`);
+        const response = await axios.get(
+          `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&pageNo=1&numOfRows=50`
+        );
 
         const parser = new XMLParser();
         const jsonData = parser.parse(response.data);
 
         console.log(jsonData); // JSON 구조 확인
+
         const items = jsonData?.response?.body?.items?.item || [];
+        console.log("아이템 구조", items); // 각 item의 구조 확인
+
         setGardenList(items);
-      } catch (error) {
-        console.error('Error fetching garden list:', error);
+
+      } 
+      catch (error) {
+        console.error("Error fetching garden list:", error);
         setError("An error occurred while fetching the data.");
-      } finally {
+      } 
+      finally {
         setLoading(false);
       }
     };
@@ -41,18 +52,23 @@ const GardenList = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error</div>;
   }
 
   return (
-    <div>
-      <h1>Garden List</h1>
-      <ul>
-        {gardenList.map((garden: any) => (
-          <li key={garden.cntntsNo}>{garden.cntntsSj}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {gardenList.map((garden: any, index: number) => {
+        const firstImageUrl = garden.rtnFileUrl.split("|")[0];
+        return (
+          <Cards
+            name={garden.cntntsSj}
+            key={index}
+            imageSrc={firstImageUrl}
+            altMessage={garden.plantGnrlNm}
+          />
+        );
+      })}
+    </>
   );
 };
 

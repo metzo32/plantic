@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className="flex flex-[1] flex-row">
-      <div className="hidden lg:flex header flex-[4] mr-5">
+      <div className="hidden lg:flex header-element flex-[4] mr-5 border">
         <button className="header-button">버튼</button>
         <button className="header-button">버튼</button>
         <button className="header-button">버튼</button>
@@ -18,8 +18,7 @@ export default function Header() {
         <input
           type="text"
           placeholder="검색"
-          className="w-[100%] header input-focus
-          placeholder-custom500 placeholder-opacity-50"
+          className="input-element"
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />

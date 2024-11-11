@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/styles.css";
 import Cards from "./Cards/Cards";
+import GardenList from "./GardenList";
 
 export default function Content() {
   const [isClicked, setIsClicked] = useState(false);
@@ -8,8 +9,6 @@ export default function Content() {
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
-
-
 
   return (
     <div>
@@ -46,20 +45,12 @@ export default function Content() {
         >
           버튼
         </button>
-
-       
       </div>
 
       <hr className="hr" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-between mt-11">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+        <GardenList />
       </div>
     </div>
   );
