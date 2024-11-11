@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../styles/styles.css";
-import Cards from "./Cards/Cards";
 import GardenList from "./GardenList";
 
 export default function Content() {
