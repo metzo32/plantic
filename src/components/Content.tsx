@@ -21,28 +21,28 @@ export default function Content() {
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          버튼
+          메뉴
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          버튼
+          메뉴
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          버튼
+          메뉴
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          버튼
+          메뉴
         </button>
       </div>
 

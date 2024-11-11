@@ -1,0 +1,43 @@
+<div>
+              <p>식물학 명: {garden.detailInfo?.plntbneNm}</p>
+              <p>
+                유통 명:{" "}
+                {garden.detailInfo?.distbNm
+                  ? garden.detailInfo.distbNm.split(",")[0]
+                  : "이름 없음"}
+              </p>
+              <p>이름: {garden.detailInfo?.cntntsSj}</p>
+
+              <p>과 코드명: {garden.detailInfo?.fmlCodeNm}</p>
+              <p>원산지 정보: {garden.detailInfo?.orgplceInfo}</p>
+
+              <p>관리 수준 코드: {garden.detailInfo?.managelevelCode}</p>
+              <p>관리 수준 코드명: {garden.detailInfo?.managelevelCodeNm}</p>
+              <p>생장 속도 코드명: {garden.detailInfo?.grwtveCodeNm}</p>
+              <p>생육 온도 코드명: {garden.detailInfo?.grwhTpCodeNm}</p>
+              <p>
+                물주기 봄 코드:{" "}
+                {garden.detailInfo?.watercycleSprngCode === "관수함"
+                  ? "물을 뿌려주세요"
+                  : garden.detailInfo?.watercycleSprngCode}
+              </p>
+              <p>
+                물주기 봄 코드명: {garden.detailInfo?.watercycleSprngCodeNm}
+              </p>
+              <p>물주기 여름 코드: {garden.detailInfo?.watercycleSummerCode}</p>
+              <p>
+                물주기 여름 코드명: {garden.detailInfo?.watercycleSummerCodeNm}
+              </p>
+              <p>물주기 가을 코드: {garden.detailInfo?.watercycleAutumnCode}</p>
+              <p>
+                물주기 가을 코드명: {garden.detailInfo?.watercycleAutumnCodeNm}
+              </p>
+              <p>물주기 겨울 코드: {garden.detailInfo?.watercycleWinterCode}</p>
+              <p>
+                물주기 겨울 코드명: {garden.detailInfo?.watercycleWinterCodeNm}
+              </p>
+
+              <p>광요구도 코드명: {garden.detailInfo?.lighttdemanddoCodeNm}</p>
+
+              <p>배치 장소 코드명: {garden.detailInfo?.postngplaceCodeNm}</p>
+            </div>
