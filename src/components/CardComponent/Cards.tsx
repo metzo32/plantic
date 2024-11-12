@@ -1,6 +1,3 @@
-import React from "react";
-import "../../styles/styles.css";
-import image from "../../assets/images/test.jpg";
 
 interface CardProps {
   name: string;
@@ -24,7 +21,7 @@ export default function Cards({
   altMessage,
 }: CardProps) {
   return (
-    <div className={`card-container`}>
+    <div className={`card-container border-2 border-red-500`}>
       <div className="flex flex-row mb-[2%] mt-[4%]">
         {tagLevel && (
           <button className="tag group">{tagLevel}</button>

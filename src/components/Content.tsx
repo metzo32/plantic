@@ -1,5 +1,5 @@
+
 import { useState } from "react";
-import "../styles/styles.css";
 import GardenList from "./GardenList";
 
 export default function Content() {
@@ -21,28 +21,28 @@ export default function Content() {
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          메뉴
+          에엥
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          메뉴
+          에엥
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          메뉴
+          에엥
         </button>
         <button
           className={`button
             ${isClicked ? "button-clicked" : ""}`}
           onClick={handleClick}
         >
-          메뉴
+          에엥
         </button>
       </div>
 

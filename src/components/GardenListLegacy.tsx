@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
-import Cards from "./Cards/Cards";
+import Cards from "./CardComponent/Cards";
 
 interface GardenItem {
   familyKorNm: string;
