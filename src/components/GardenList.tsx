@@ -1,88 +1,134 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 import Cards from "./CardComponent/Cards";
-import {LevNum01, LevNum02, LevNum03, LevTime01, LevTime02, LevTime03, LevLight01, LevLight02, LevLight03 } from "./Icons";
+import {
+  LevNum01,
+  LevNum02,
+  LevNum03,
+  LevLight01,
+  LevLight02,
+  LevLight03,
+  LevTime01,
+  LevTime02,
+  LevTime03,
+} from "./Icons";
 
-interface GardenItem {
+interface FileItemProps {
+  rtnFileUrl: string;
+}
+
+interface DetailInfoProps {
+  managelevelCodeNm?: string;
+  grwtveCodeNm?: string;
+  lighttdemanddoCodeNm?: string;
+  plntbneNm?: string;
+  orgplceInfo?: string;
+}
+
+interface GardenItemProps {
   familyKorNm: string;
   cntntsSj: string;
   rnum: number;
   imgUrl: string;
   plantGnrlNm: string;
+  cntntsNo: string;
+  detailInfo?: DetailInfoProps;
+  fileList?: FileItemProps[];
 }
 
 const GardenList = () => {
-  const [gardenList, setGardenList] = useState<GardenItem[]>([]);
+  const [gardenList, setGardenList] = useState<GardenItemProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [pageNo, setPageNo] = useState<number>(1);
+  const [pageNo, setPageNo] = useState<number>(1); // pageNum 대신 pageNo 사용
+  const observerRef = useRef<HTMLDivElement | null>(null);
+
+  const fetchGardenList = async () => {
+    setLoading(true);
+    try {
+      const apiKey = process.env.REACT_APP_API_KEY;
+
+      // pageNo와 numOfRows를 사용하여 API 호출
+      const gardenListResponse = await axios.get(
+        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
+      );
+
+      const parser = new XMLParser();
+      const gardenListJson = parser.parse(gardenListResponse.data);
+      const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
+
+      console.log("1번", gardenListItems)
+
+      const detailedItems: GardenItemProps[] = await Promise.all(
+        gardenListItems.map(async (item: any) => {
+          const cntntsNo = item.cntntsNo;
+
+          const gardenDetailResponse = await axios.get(
+            `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+          );
+
+          const gardenDetailJson = parser.parse(gardenDetailResponse.data);
+          const detailInfo: DetailInfoProps = gardenDetailJson?.response?.body?.item || {};
+
+          console.log("2번", detailInfo)
+
+          const gardenFileListResponse = await axios.get(
+            `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+          );
+
+          const gardenFileListJson = parser.parse(gardenFileListResponse.data);
+          let fileList: FileItemProps[] =
+            gardenFileListJson?.response?.body?.items?.item || [];
+
+            console.log("3번", fileList)
+          if (!Array.isArray(fileList)) {
+            fileList = [fileList];
+          }
+
+          return {
+            ...item,
+            detailInfo,
+            fileList,
+          };
+        })
+      );
+
+      setGardenList((prev) => [...prev, ...detailedItems]);
+    } catch (error) {
+      console.error("Error fetching garden list:", error);
+      setError("An error occurred while fetching the data.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchGardenList = async () => {
-      try {
-        const apiKey = process.env.REACT_APP_API_KEY;
+    fetchGardenList();
+  }, [pageNo]);
 
-        // 실내정원용 식물 목록
-        const gardenListResponse = await axios.get(
-          `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
-        );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading) {
+          setPageNo((prev) => prev + 1); // 페이지 번호 증가
+        }
+      },
+      { rootMargin: "200px" }
+    );
 
-        const parser = new XMLParser();
-        const gardenListJson = parser.parse(gardenListResponse.data);
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
 
-        const items = gardenListJson?.response?.body?.items?.item || [];
-
-        // 각 식물의 상세 정보와 첨부파일 목록 가져오기
-        const detailedItems = await Promise.all(
-          items.map(async (item: any) => {
-            const cntntsNo = item.cntntsNo; // 컨텐츠 번호
-
-            // 실내정원용 식물 상세
-            const gardenDetailResponse = await axios.get(
-              `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
-            );
-
-            const gardenDetailJson = parser.parse(gardenDetailResponse.data);
-            const detailInfo = gardenDetailJson?.response?.body?.item;
-
-            // 실내정원용 식물 첨부파일 목록
-            const gardenFileListResponse = await axios.get(
-              `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
-            );
-
-            const gardenFileListJson = parser.parse(
-              gardenFileListResponse.data
-            );
-            let fileList =
-              gardenFileListJson?.response?.body?.items?.item || [];
-
-            // fileList가 객체일 때 배열로 변환
-            if (!Array.isArray(fileList)) {
-              fileList = [fileList];
-            }
-
-            return {
-              ...item,
-              detailInfo,
-              fileList,
-            };
-          })
-        );
-
-        setGardenList(detailedItems);
-      } catch (error) {
-        console.error("Error fetching garden list:", error);
-        setError("An error occurred while fetching the data.");
-      } finally {
-        setLoading(false);
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
       }
     };
+  }, [loading]);
 
-    fetchGardenList();
-  }, []);
-
-  if (loading) {
+  if (loading && gardenList.length === 0) {
     return <div>Loading...</div>;
   }
 
@@ -92,11 +138,8 @@ const GardenList = () => {
 
   return (
     <>
-      {gardenList.map((garden: any) => {
-        // 첫 번째 이미지 URL을 가져오기
-        const firstImageUrl = garden.fileList[0]?.rtnFileUrl || "";
-        console.log("이미지주소", garden.fileList);
-        console.log("가공된 이미지주소", firstImageUrl);
+      {gardenList.map((garden, index) => {
+        const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";
 
         const levelData = garden.detailInfo?.managelevelCodeNm;
         const level =
@@ -156,20 +199,19 @@ const GardenList = () => {
           ) : null;
 
         return (
-          <>
-            <Cards
-              name={garden.cntntsSj}
-              nameEng={garden.detailInfo?.plntbneNm || null}
-              info={"에서 자라는 식물"}
-              tagLevel={level}
-              tagSpeed={speed}
-              key={garden.cntntsNo}
-              imageSrc={firstImageUrl}
-              altMessage={garden.plantGnrlNm}
-            />
-          </>
+          <Cards
+            name={garden.cntntsSj}
+            nameEng={garden.detailInfo?.plntbneNm || null}
+            tagLevel={level}
+            tagSpeed={speed}
+            tagLight={light}
+            key={`${garden.cntntsNo}-${index}`}
+            imageSrc={firstImageUrl}
+            altMessage={garden.plantGnrlNm}
+          />
         );
       })}
+      <div ref={observerRef} />
     </>
   );
 };
