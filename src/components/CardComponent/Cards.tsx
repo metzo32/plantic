@@ -21,7 +21,7 @@ export default function Cards({
   altMessage,
 }: CardProps) {
   return (
-    <div className={`card-container border-2 border-red-500`}>
+    <div className={`card-container`}>
       <div className="flex flex-row mb-[2%] mt-[4%]">
         {tagLevel && (
           <button className="tag group">{tagLevel}</button>
