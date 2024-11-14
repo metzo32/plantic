@@ -51,14 +51,12 @@ const GardenList = () => {
 
       // pageNo와 numOfRows를 사용하여 API 호출
       const gardenListResponse = await axios.get(
-        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
+        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=3&pageNo=${pageNo}`
       );
 
       const parser = new XMLParser();
       const gardenListJson = parser.parse(gardenListResponse.data);
       const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
-
-      console.log("1번", gardenListItems)
 
       const detailedItems: GardenItemProps[] = await Promise.all(
         gardenListItems.map(async (item: any) => {
@@ -71,8 +69,6 @@ const GardenList = () => {
           const gardenDetailJson = parser.parse(gardenDetailResponse.data);
           const detailInfo: DetailInfoProps = gardenDetailJson?.response?.body?.item || {};
 
-          console.log("2번", detailInfo)
-
           const gardenFileListResponse = await axios.get(
             `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
           );
@@ -80,8 +76,7 @@ const GardenList = () => {
           const gardenFileListJson = parser.parse(gardenFileListResponse.data);
           let fileList: FileItemProps[] =
             gardenFileListJson?.response?.body?.items?.item || [];
-
-            console.log("3번", fileList)
+            
           if (!Array.isArray(fileList)) {
             fileList = [fileList];
           }
