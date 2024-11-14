@@ -41,24 +41,25 @@ const GardenList = () => {
   const [gardenList, setGardenList] = useState<GardenItemProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [pageNo, setPageNo] = useState<number>(1); // pageNum 대신 pageNo 사용
+  const [pageNo, setPageNo] = useState<number>(1); 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
   const fetchGardenList = async () => {
     setLoading(true);
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
+      const parser = new XMLParser();
 
-      // pageNo와 numOfRows를 사용하여 API 호출
       const gardenListResponse = await axios.get(
-        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=3&pageNo=${pageNo}`
+        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
       );
 
-      const parser = new XMLParser();
       const gardenListJson = parser.parse(gardenListResponse.data);
       const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
 
-      const detailedItems: GardenItemProps[] = await Promise.all(
+
+
+      const detailedItems: GardenItemProps[] = await Promise.all( //각 item에 대해 gardenDtl와 gardenFileList API를 동시에 호출하여 병렬 작업
         gardenListItems.map(async (item: any) => {
           const cntntsNo = item.cntntsNo;
 
@@ -68,6 +69,7 @@ const GardenList = () => {
 
           const gardenDetailJson = parser.parse(gardenDetailResponse.data);
           const detailInfo: DetailInfoProps = gardenDetailJson?.response?.body?.item || {};
+          // console.log(detailInfo)
 
           const gardenFileListResponse = await axios.get(
             `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
@@ -81,7 +83,7 @@ const GardenList = () => {
             fileList = [fileList];
           }
 
-          return {
+          return { //새로운 배열로 반환
             ...item,
             detailInfo,
             fileList,
@@ -89,7 +91,17 @@ const GardenList = () => {
         })
       );
 
-      setGardenList((prev) => [...prev, ...detailedItems]);
+       // setGardenList((prev) => [...prev, ...detailedItems]);
+
+      setGardenList((prev) => { // 중복을 확인하고 제거
+        const existingIds = new Set(prev.map((item) => item.cntntsNo));
+        const uniqueItems = detailedItems.filter(
+          (item) => !existingIds.has(item.cntntsNo)
+        );
+        return [...prev, ...uniqueItems];
+      });
+ 
+
     } catch (error) {
       console.error("Error fetching garden list:", error);
       setError("An error occurred while fetching the data.");
@@ -97,6 +109,7 @@ const GardenList = () => {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchGardenList();
