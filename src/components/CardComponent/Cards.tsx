@@ -6,6 +6,7 @@ interface CardProps {
   tagLevel?: React.ReactNode;
   tagSpeed?: React.ReactNode;
   tagLight?: React.ReactNode;
+  tagWater?: React.ReactNode;
   imageSrc: string;
   altMessage: string;
 }
@@ -17,6 +18,7 @@ export default function Cards({
   tagLevel,
   tagSpeed,
   tagLight,
+  tagWater,
   imageSrc,
   altMessage,
 }: CardProps) {
@@ -31,6 +33,9 @@ export default function Cards({
         )}
         {tagLight && (
           <button className="tag group">{tagLight}</button>
+        )}
+        {tagWater && (
+          <button className="tag group">{tagWater}</button>
         )}
       </div>
 

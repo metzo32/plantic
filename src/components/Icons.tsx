@@ -2,6 +2,11 @@ import { ReactComponent as IconLevDiff01 } from "../assets/svg/level_diff_01.svg
 import { ReactComponent as IconLevDiff02 } from "../assets/svg/level_diff_02.svg";
 import { ReactComponent as IconLevDiff03 } from "../assets/svg/level_diff_03.svg";
 
+import { ReactComponent as IconWaterf01 } from "../assets/svg/water_01.svg"
+import { ReactComponent as IconWaterf02 } from "../assets/svg/water_02.svg"
+import { ReactComponent as IconWaterf03 } from "../assets/svg/water_03.svg"
+import { ReactComponent as IconWaterf04 } from "../assets/svg/water_04.svg"
+
 import { MdSunny } from "react-icons/md";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { MdCloud } from "react-icons/md";
@@ -61,6 +66,33 @@ export function LevTime03() {
     <IconLevDiff03 className="w-7 h-auto fill-green-700 group-hover:fill-white" />
   );
 }
+
+export function LevWater01() {
+  return (
+    <IconWaterf01 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+  );
+}
+
+export function LevWater02() {
+  return (
+    <IconWaterf02 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+  );
+}
+
+
+export function LevWater03() {
+  return (
+    <IconWaterf03 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+  );
+}
+
+
+export function LevWater04() {
+  return (
+    <IconWaterf04 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+  );
+}
+
 
 export function QuestionMark() {
   return <FaQuestion />;

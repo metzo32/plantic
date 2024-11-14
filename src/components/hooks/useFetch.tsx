@@ -1,53 +1,117 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 
-interface GardenItem {
+interface FileItemProps {
+  rtnFileUrl: string;
+}
+
+interface DetailInfoProps {
+  managelevelCodeNm?: string;
+  grwtveCodeNm?: string;
+  lighttdemanddoCodeNm?: string;
+  plntbneNm?: string;
+  orgplceInfo?: string;
+  watercycleSummerCode: number;
+  watercycleSummerCodeNm: string;
+}
+
+interface GardenItemProps {
   familyKorNm: string;
   cntntsSj: string;
   rnum: number;
   imgUrl: string;
   plantGnrlNm: string;
+  cntntsNo: string;
+  detailInfo?: DetailInfoProps;
+  fileList?: FileItemProps[];
 }
 
-const useFetchGardenList = () => {
-  const [gardenList, setGardenList] = useState<GardenItem[]>([]);
+export const useFetchGardenList = () => {
+  const [gardenList, setGardenList] = useState<GardenItemProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [pageNo, setPageNo] = useState<number>(1);
+  const observerRef = useRef<HTMLDivElement | null>(null);
+
+  const fetchGardenList = async () => {
+    setLoading(true);
+    try {
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const parser = new XMLParser();
+
+      const gardenListResponse = await axios.get(
+        `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
+      );
+
+      const gardenListJson = parser.parse(gardenListResponse.data);
+      const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
+
+      const detailedItems: GardenItemProps[] = await Promise.all(
+        gardenListItems.map(async (item: any) => {
+          const cntntsNo = item.cntntsNo;
+
+          const gardenDetailResponse = await axios.get(
+            `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+          );
+          const gardenDetailJson = parser.parse(gardenDetailResponse.data);
+          const detailInfo: DetailInfoProps =
+            gardenDetailJson?.response?.body?.item || {};
+
+          const gardenFileListResponse = await axios.get(
+            `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+          );
+          const gardenFileListJson = parser.parse(gardenFileListResponse.data);
+          let fileList: FileItemProps[] =
+            gardenFileListJson?.response?.body?.items?.item || [];
+
+          if (!Array.isArray(fileList)) {
+            fileList = [fileList];
+          }
+
+          return { ...item, detailInfo, fileList };
+        })
+      );
+
+      setGardenList((prev) => {
+        const existingIds = new Set(prev.map((item) => item.cntntsNo));
+        const uniqueItems = detailedItems.filter(
+          (item) => !existingIds.has(item.cntntsNo)
+        );
+        return [...prev, ...uniqueItems];
+      });
+    } catch (error) {
+      console.error("Error fetching garden list:", error);
+      setError("데이터를 가져오는 도중 오류가 발생했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchGardenList = async () => {
-      try {
-        const cachedData = localStorage.getItem("gardenList");
-        if (cachedData) {
-          setGardenList(JSON.parse(cachedData));
-          setLoading(false);
-          return;
+    fetchGardenList();
+  }, [pageNo]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading) {
+          setPageNo((prev) => prev + 1);
         }
+      },
+      { rootMargin: "200px" }
+    );
 
-        const apiKey = process.env.REACT_APP_API_KEY;
-        const response = await axios.get(
-          `http://localhost:8080/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&pageNo=1&numOfRows=50`
-        );
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
 
-        const parser = new XMLParser();
-        const jsonData = parser.parse(response.data);
-        const items = jsonData?.response?.body?.items?.item || [];
-
-        setGardenList(items);
-        localStorage.setItem("gardenList", JSON.stringify(items)); // 데이터 캐싱
-      } catch (error) {
-        console.error("Error fetching garden list:", error);
-        setError("데이터를 가져오는 중 오류가 발생했습니다.");
-      } finally {
-        setLoading(false);
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
       }
     };
+  }, [loading]);
 
-    fetchGardenList();
-  }, []);
-
-  return { gardenList, loading, error };
+  return { gardenList, loading, error, observerRef };
 };
-
-export default useFetchGardenList;

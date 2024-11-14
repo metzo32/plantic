@@ -8,7 +8,6 @@ function App() {
       <div className="page-container">
         <Header />
         <Content />
-
       </div>
     </div>
   );
