@@ -15,84 +15,83 @@ import { FaQuestion } from "react-icons/fa";
 
 export function LevNum01() {
   return (
-    <span className="w-6 h-auto fill-green-700 group-hover:fill-white font-bold">1</span>
+    <span className="icon-general levelIcon">1</span>
   );
 }
 
 export function LevNum02() {
   return (
-    <span className="w-6 h-auto fill-green-700 group-hover:fill-white font-bold">2</span>
+    <span className="icon-general levelIcon">2</span>
   );
 }
 
 export function LevNum03() {
   return (
-    <span className="w-6 h-auto fill-green-700 group-hover:fill-white font-bold">3</span>
+    <span className="icon-general levelIcon">3</span>
   );
 }
 
 export function LevLight01() {
   return (
-    <MdSunny className="w-6 h-auto fill-green-700 group-hover:fill-white" />
+    <MdSunny className="icon-general w-6 h-auto" />
   );
 }
 
 export function LevLight02() {
   return (
-    <MdOutlineWbSunny className="w-6 h-auto fill-green-700 group-hover:fill-white" />
+    <MdOutlineWbSunny className="icon-general w-6 h-auto" />
   );
 }
 
 export function LevLight03() {
   return (
-    <MdCloud className="w-6 h-auto fill-green-700 group-hover:fill-white" />
+    <MdCloud className="icon-general w-6 h-auto" />
   );
 }
 
 export function LevTime01() {
   return (
-    <IconLevDiff01 className="w-[0.6rem] h-auto fill-green-700 group-hover:fill-white" />
+    <IconLevDiff01 className="icon-general w-[0.6rem] h-auto" />
   );
 }
 
 export function LevTime02() {
   return (
-    <IconLevDiff02 className="w-7 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+    <IconLevDiff02 className="icon-general w-7 h-auto mt-1" />
   );
 }
 
 export function LevTime03() {
   return (
-    <IconLevDiff03 className="w-7 h-auto fill-green-700 group-hover:fill-white" />
+    <IconLevDiff03 className="icon-general w-7 h-auto" />
   );
 }
 
 export function LevWater01() {
   return (
-    <IconWaterf01 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+    <IconWaterf01 className="icon-general waterIcon" />
   );
 }
 
 export function LevWater02() {
   return (
-    <IconWaterf02 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+    <IconWaterf02 className="icon-general waterIcon" />
   );
 }
 
 
 export function LevWater03() {
   return (
-    <IconWaterf03 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+    <IconWaterf03 className="icon-general waterIcon" />
   );
 }
 
 
 export function LevWater04() {
   return (
-    <IconWaterf04 className="w-5 h-auto mt-1 fill-green-700 group-hover:fill-white" />
+    <IconWaterf04 className="icon-general waterIcon" />
   );
 }
-
 
 export function QuestionMark() {
   return <FaQuestion />;

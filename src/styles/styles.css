@@ -139,10 +139,17 @@ html {
   @apply w-full aspect-[1/1] object-cover rounded-[5%];
 }
 
-.hr {
-  @apply border-custom500 
-  my-2
-  md:my-4;
+.main-line {
+  @apply
+  w-full h-[35px] my-2 
+  /* border-t */
+  border border-custom500
+  
+  sm:h-[60px]
+  md:h-[80px]
+  lg:h-[100px]
+  md:my-4
+  
 }
 
 .header-element {
@@ -177,4 +184,20 @@ html {
   focus:ring-1
   focus:ring-custom700
   focus:text-custom700;
+}
+
+.icon-general {
+  @apply
+  fill-green-700 group-hover:fill-white
+}
+
+.levelIcon {
+  @apply
+  w-6 h-auto
+  font-bold
+}
+
+.waterIcon {
+  @apply
+  w-5 h-auto mt-1
 }
