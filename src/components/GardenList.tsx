@@ -5,7 +5,7 @@ import {
   getSpeedIcon,
   getLightIcon,
   getWaterIcon,
-} from "./RenderIcons"
+} from "./RenderIcons";
 
 const GardenList = () => {
   const { gardenList, loading, error, observerRef } = useFetchGardenList();
@@ -20,34 +20,34 @@ const GardenList = () => {
 
   return (
     <>
-    {gardenList.map((garden, index) => {
-      const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";
+      {gardenList.map((garden, index) => {
+        const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";
 
-      const level = getLevelIcon(garden.detailInfo?.managelevelCodeNm);
-      const speed = getSpeedIcon(garden.detailInfo?.grwtveCodeNm);
-      const light = getLightIcon(
-        garden.detailInfo?.lighttdemanddoCodeNm?.split(" ")[0]
-      );
-      const water = getWaterIcon(
-        Number(garden.detailInfo?.watercycleSummerCode?.toString())
-      );
+        const level = getLevelIcon(garden.detailInfo?.managelevelCodeNm);
+        const speed = getSpeedIcon(garden.detailInfo?.grwtveCodeNm);
+        const light = getLightIcon(
+          garden.detailInfo?.lighttdemanddoCodeNm?.split(" ")[0]
+        );
+        const water = getWaterIcon(
+          Number(garden.detailInfo?.watercycleSummerCode?.toString())
+        );
 
-      return (
-        <Cards
-          name={garden.cntntsSj}
-          nameEng={garden.detailInfo?.plntbneNm || ""}
-          tagLevel={level}
-          tagSpeed={speed}
-          tagLight={light}
-          tagWater={water}
-          key={`${garden.cntntsNo}-${index}`}
-          imageSrc={firstImageUrl}
-          altMessage={garden.plantGnrlNm}
-        />
-      );
-    })}
-    <div ref={observerRef} />
-  </>
+        return (
+          <Cards
+            name={garden.cntntsSj}
+            nameEng={garden.detailInfo?.plntbneNm || ""}
+            tagLevel={level}
+            tagSpeed={speed}
+            tagLight={light}
+            tagWater={water}
+            key={`${garden.cntntsNo}-${index}`}
+            imageSrc={firstImageUrl}
+            altMessage={garden.plantGnrlNm}
+          />
+        );
+      })}
+      <div ref={observerRef} />
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-
 interface CardProps {
   name: string;
   nameEng?: string | null;
@@ -26,18 +25,10 @@ export default function Cards({
   return (
     <div className="card-container">
       <div className="flex flex-row mb-[2%] mt-[4%]">
-        {tagLevel && (
-          <button className="tag group">{tagLevel}</button>
-        )}
-        {tagSpeed && (
-          <button className="tag group">{tagSpeed}</button>
-        )}
-        {tagLight && (
-          <button className="tag group">{tagLight}</button>
-        )}
-        {tagWater && (
-          <button className="tag group">{tagWater}</button>
-        )}
+        {tagLevel}
+        {tagSpeed}
+        {tagLight}
+        {tagWater}
       </div>
 
       <h2 className="h2 mb-[1%] mt-[3%]">{name}</h2>

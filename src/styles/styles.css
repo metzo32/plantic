@@ -97,7 +97,23 @@ html {
 
   md:text-lg
 
-  hover:w-[150px] hover:bg-custom700 hover:border-custom700 hover:text-custom50;
+  hover:w-[120px]
+ hover:bg-custom700 hover:border-custom700 hover:text-custom50;
+}
+
+.tag.hoverSm {
+  @apply
+  hover:w-[120px]
+}
+
+.tag.hoverMd {
+  @apply
+  hover:w-[150px]
+}
+
+.tag.hoverLg {
+  @apply
+  hover:w-[190px]
 }
 
 .tag-span {

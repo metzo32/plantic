@@ -23,7 +23,7 @@ type IconProps = {
 
 const IconWithLabel = ({ Icon, label }: IconProps) => (
   <>
-    <Icon/>
+    <Icon />
     <span className="tag-span">{label}</span>
   </>
 );
@@ -31,11 +31,23 @@ const IconWithLabel = ({ Icon, label }: IconProps) => (
 export const getLevelIcon = (levelData: string | undefined) => {
   switch (levelData) {
     case "초보자":
-      return <IconWithLabel Icon={LevNum01} label="키우기 쉬워요" />;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevNum01} label="키우기 쉬워요" />
+        </button>
+      );
     case "경험자":
-      return <IconWithLabel Icon={LevNum02} label="키울만 해요" />;
+      return (
+        <button className="tag hoverSm group">
+          <IconWithLabel Icon={LevNum02} label="키울만 해요" />
+        </button>
+      );
     case "전문가":
-      return <IconWithLabel Icon={LevNum03} label="키우기 어려워요" />;
+      return (
+        <button className="tag group">
+          <IconWithLabel Icon={LevNum03} label="키우기 어려워요" />
+        </button>
+      );
     default:
       return null;
   }
@@ -44,11 +56,23 @@ export const getLevelIcon = (levelData: string | undefined) => {
 export const getSpeedIcon = (speedData: string | undefined) => {
   switch (speedData) {
     case "느림":
-      return <IconWithLabel Icon={LevTime01} label="금방 자라요" />;
+      return (
+        <button className="tag hoverSm group">
+          <IconWithLabel Icon={LevTime01} label="금방 자라요" />
+        </button>
+      );
     case "보통":
-      return <IconWithLabel Icon={LevTime02} label="곧 자라요" />;
+      return (
+        <button className="tag hoverSm group">
+          <IconWithLabel Icon={LevTime02} label="곧 자라요" />
+        </button>
+      );
     case "빠름":
-      return <IconWithLabel Icon={LevTime03} label="시간이 걸려요" />;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevTime03} label="시간이 걸려요" />
+        </button>
+      );
     default:
       return null;
   }
@@ -57,11 +81,23 @@ export const getSpeedIcon = (speedData: string | undefined) => {
 export const getLightIcon = (lightData: string | undefined) => {
   switch (lightData) {
     case "낮은":
-      return <IconWithLabel Icon={LevLight01} label="그늘도 좋아요"/>;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevLight01} label="그늘도 좋아요" />
+        </button>
+      );
     case "중간":
-      return <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요"/>;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요" />
+        </button>
+      );
     case "높은":
-      return <IconWithLabel Icon={LevLight03} label="햇볕이 많이 필요해요"/>;
+      return (
+        <button className="tag hoverLg group">
+          <IconWithLabel Icon={LevLight03} label="햇볕이 많이 필요해요" />
+        </button>
+      );
     default:
       return null;
   }
@@ -70,13 +106,29 @@ export const getLightIcon = (lightData: string | undefined) => {
 export const getWaterIcon = (waterData: number | undefined) => {
   switch (waterData) {
     case 53001:
-      return <IconWithLabel Icon={LevWater01} label="물을 매일 줘요"/>;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevWater01} label="물을 매일 줘요" />
+        </button>
+      );
     case 53002:
-      return <IconWithLabel Icon={LevWater02} label="물을 자주 줘요"/>;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevWater02} label="물을 자주 줘요" />
+        </button>
+      );
     case 53003:
-      return <IconWithLabel Icon={LevWater03} label="물을 가끔 줘요"/>;
+      return (
+        <button className="tag hoverMd group">
+          <IconWithLabel Icon={LevWater03} label="물을 가끔 줘요" />
+        </button>
+      );
     case 53004:
-      return <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요"/>;
+      return (
+        <button className="tag hoverLg group">
+          <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요" />
+        </button>
+      );
     default:
       return null;
   }
