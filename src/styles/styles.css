@@ -169,14 +169,14 @@ html {
 }
 
 .popup-container {
-  @apply w-[100%] h-full 
+  @apply w-[100%] h-full
   border border-red-600 rounded-2xl
   bg-slate-300
   flex flex-row items-center
-  absolute translate-y-10
+  absolute 
   transition-all duration-100 ease-in-out
 
-  animate-fade-right animate-once animate-duration-500 animate-delay-300 animate-ease-in-out;
+  animate-fade-right animate-once animate-duration-500 animate-delay-100 animate-ease-in-out;
 }
 
 

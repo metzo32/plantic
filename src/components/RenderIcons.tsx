@@ -125,7 +125,7 @@ export const getWaterIcon = (waterData: number | undefined) => {
       );
     case 53004:
       return (
-        <button className="tag hoverLg group">
+        <button className="tag hoverMd group">
           <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요" />
         </button>
       );

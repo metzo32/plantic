@@ -32,6 +32,8 @@ const GardenList = () => {
           Number(garden.detailInfo?.watercycleSummerCode?.toString())
         );
 
+        const delay = (index % 3) * 0.2;
+
         return (
           <Cards
             name={garden.cntntsSj}
@@ -43,6 +45,7 @@ const GardenList = () => {
             key={`${garden.cntntsNo}-${index}`}
             imageSrc={firstImageUrl}
             altMessage={garden.plantGnrlNm}
+            delay={delay} 
           />
         );
       })}
