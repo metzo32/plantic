@@ -33,7 +33,7 @@ export function LevNum03() {
 
 export function LevLight01() {
   return (
-    <MdSunny className="icon-general w-6 h-auto" />
+    <MdCloud className="icon-general w-6 h-auto" />
   );
 }
 
@@ -45,7 +45,7 @@ export function LevLight02() {
 
 export function LevLight03() {
   return (
-    <MdCloud className="icon-general w-6 h-auto" />
+    <MdSunny className="icon-general w-6 h-auto" />
   );
 }
 

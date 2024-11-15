@@ -57,7 +57,7 @@ export const getSpeedIcon = (speedData: string | undefined) => {
 export const getLightIcon = (lightData: string | undefined) => {
   switch (lightData) {
     case "낮은":
-      return <IconWithLabel Icon={LevLight01} label="햇볕 없이도 좋아요"/>;
+      return <IconWithLabel Icon={LevLight01} label="그늘도 좋아요"/>;
     case "중간":
       return <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요"/>;
     case "높은":

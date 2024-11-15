@@ -24,7 +24,7 @@ export default function Cards({
 }: CardProps) {
   
   return (
-    <div className={`card-container`}>
+    <div className="card-container">
       <div className="flex flex-row mb-[2%] mt-[4%]">
         {tagLevel && (
           <button className="tag group">{tagLevel}</button>
