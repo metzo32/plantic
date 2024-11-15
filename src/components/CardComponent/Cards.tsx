@@ -22,6 +22,7 @@ export default function Cards({
   imageSrc,
   altMessage,
 }: CardProps) {
+  
   return (
     <div className={`card-container`}>
       <div className="flex flex-row mb-[2%] mt-[4%]">

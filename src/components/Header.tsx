@@ -27,7 +27,7 @@ export default function Header() {
           className={`absolute top-1/2 right-[20px] transform -translate-y-1/2 text-2xl 
                       ${isFocused ? "text-custom700" : "text-custom500"}`}
         >
-          <IoIosSearch />
+          <IoIosSearch className="hover:fill-green-800 "/>
         </button>
       </div>
 

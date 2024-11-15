@@ -16,16 +16,16 @@ import {
 } from "./Icons";
 import React from "react";
 
-interface IconProps {
-  Icon: React.ComponentType;
+type IconProps = {
+  Icon: React.ElementType;
   label: string;
 };
 
 const IconWithLabel = ({ Icon, label }: IconProps) => (
-  <div className="flex">
-    <Icon />
-    <span className="hidden">{label}</span>
-  </div>
+  <>
+    <Icon/>
+    <span className="tag-span">{label}</span>
+  </>
 );
 
 export const getLevelIcon = (levelData: string | undefined) => {
@@ -57,11 +57,11 @@ export const getSpeedIcon = (speedData: string | undefined) => {
 export const getLightIcon = (lightData: string | undefined) => {
   switch (lightData) {
     case "낮은":
-      return <IconWithLabel Icon={LevLight01} label="햇볕 없이도 좋아요" />;
+      return <IconWithLabel Icon={LevLight01} label="햇볕 없이도 좋아요"/>;
     case "중간":
-      return <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요" />;
+      return <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요"/>;
     case "높은":
-      return <IconWithLabel Icon={LevLight03} label="햇볕이 많이 필요해요" />;
+      return <IconWithLabel Icon={LevLight03} label="햇볕이 많이 필요해요"/>;
     default:
       return null;
   }
@@ -70,13 +70,13 @@ export const getLightIcon = (lightData: string | undefined) => {
 export const getWaterIcon = (waterData: number | undefined) => {
   switch (waterData) {
     case 53001:
-      return <IconWithLabel Icon={LevWater01} label="물을 매일 줘요" />;
+      return <IconWithLabel Icon={LevWater01} label="물을 매일 줘요"/>;
     case 53002:
-      return <IconWithLabel Icon={LevWater02} label="물을 자주 줘요" />;
+      return <IconWithLabel Icon={LevWater02} label="물을 자주 줘요"/>;
     case 53003:
-      return <IconWithLabel Icon={LevWater03} label="물을 가끔 줘요" />;
+      return <IconWithLabel Icon={LevWater03} label="물을 가끔 줘요"/>;
     case 53004:
-      return <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요" />;
+      return <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요"/>;
     default:
       return null;
   }
