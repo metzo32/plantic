@@ -144,12 +144,21 @@ html {
   w-full h-[35px] my-2 
   /* border-t */
   border border-custom500
+  relative
   
   sm:h-[60px]
   md:h-[80px]
   lg:h-[100px]
   md:my-4
-  
+}
+
+.popup-container {
+  @apply
+  w-[100%] h-full 
+  border border-red-600 rounded-2xl
+  bg-slate-300
+  flex flex-row items-center
+  absolute
 }
 
 .header-element {

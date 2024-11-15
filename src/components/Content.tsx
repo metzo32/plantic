@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GardenList from "./GardenList";
+import MenuPopups from "./MenuPopups";
 
 export default function Content() {
   const buttonNames = ["난이도", "성장 속도", "햇볕", "물주기"];
@@ -27,7 +28,10 @@ export default function Content() {
         ))}
       </div>
 
-      <div className="main-line"/>
+      <div className="main-line">
+        <MenuPopups/>
+
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-between mt-11">
         <GardenList />
