@@ -46,7 +46,7 @@ export default function Cards({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay }} // delay 추가
+        transition={{ duration: 0.7, delay }} // delay 추가
       >
         <div className="card-container">
           <div className="flex flex-row mb-[2%] mt-[4%]">

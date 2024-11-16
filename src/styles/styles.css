@@ -93,6 +93,7 @@ html {
   border border-custom500 rounded-full
   text-base text-custom500
   whitespace-nowrap
+  overflow-hidden
   transition-all duration-300 ease-in-out
 
   md:text-lg
@@ -157,9 +158,9 @@ html {
 }
 
 .main-line {
-  @apply w-full h-[35px] my-2 
-  /* border-t */
-  border border-custom500
+  @apply w-full h-[30px] my-2 
+  border-t
+  border-custom500
   relative
   
   sm:h-[60px]
@@ -169,14 +170,25 @@ html {
 }
 
 .popup-container {
-  @apply w-[100%] h-full
-  border border-red-600 rounded-2xl
-  bg-slate-300
+  @apply w-[50%] h-[70%] mt-10 ml-10
+  border border-custom500 rounded-2xl rounded-tl-none
   flex flex-row items-center
   absolute 
   transition-all duration-100 ease-in-out
 
-  animate-fade-right animate-once animate-duration-500 animate-delay-100 animate-ease-in-out;
+  animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out;
+}
+
+.popup-tri {
+  @apply
+  fill-custom500
+  absolute top-0 left-0 -translate-y-full -translate-x-[1px] z-10
+}
+
+.popup-bg {
+  @apply
+  fill-custom50
+  absolute top-0 left-0 -translate-y-full
 }
 
 

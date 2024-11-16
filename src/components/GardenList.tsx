@@ -11,11 +11,11 @@ const GardenList = () => {
   const { gardenList, loading, error, observerRef } = useFetchGardenList();
 
   if (loading && gardenList.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="text-basic">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error</div>;
+    return <div className="text-basic">Error</div>;
   }
 
   return (
@@ -32,7 +32,7 @@ const GardenList = () => {
           Number(garden.detailInfo?.watercycleSummerCode?.toString())
         );
 
-        const delay = (index % 3) * 0.2;
+        const delay = (index % 3) * 0.5;
 
         return (
           <Cards
@@ -45,7 +45,7 @@ const GardenList = () => {
             key={`${garden.cntntsNo}-${index}`}
             imageSrc={firstImageUrl}
             altMessage={garden.plantGnrlNm}
-            delay={delay} 
+            delay={delay}
           />
         );
       })}

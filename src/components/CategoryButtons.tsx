@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MenuPopups from "./MenuPopups";
+import Triangle from "./Triangle";
 
 export default function CategoryButtons() {
   const [selected, setSelected] = useState<string | null>(null);
@@ -24,19 +25,29 @@ export default function CategoryButtons() {
       </div>
 
       <div className="main-line">
-        {/* <MenuPopups /> */}
-
         {selected === "난이도" && (
-          <div className="popup-container">난이도 관련 내용</div>
+          <div className="popup-container">
+           <Triangle/>
+            난이도 관련 내용
+          </div>
         )}
         {selected === "성장 속도" && (
-          <div className="popup-container">성장 속도 관련 내용</div>
+          <div className="popup-container">
+           <Triangle/>
+            성장 속도 관련 내용
+          </div>
         )}
         {selected === "햇볕" && (
-          <div className="popup-container">햇볕 관련 내용</div>
+          <div className="popup-container">
+           <Triangle/>
+            햇볕 관련 내용
+          </div>
         )}
         {selected === "물주기" && (
-          <div className="popup-container">물주기 관련 내용</div>
+          <div className="popup-container">
+           <Triangle/>
+            물주기 관련 내용
+          </div>
         )}
       </div>
     </>
