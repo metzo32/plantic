@@ -51,43 +51,85 @@ html {
   sm:p-8;
 }
 
-.border-green {
-  @apply border border-custom500;
-}
 
-.text-basic {
-  @apply text-custom500
-  text-sm
+@layer base {
+  h1 {
+    @apply text-custom500;
+  }
+
+  h2 {
+    @apply text-custom500 font-bold text-3xl;
+  }
+
+  h3 {
+    @apply text-custom500;
+  }
+
+  h4 {
+    @apply text-custom300;
+  }
+
+  input {
+    @apply w-full bg-transparent
+    placeholder-custom500 placeholder-opacity-50
+    focus:outline-none;
+  }
+
+  button {
+    @apply 
+    text-basic
+    whitespace-nowrap
   
-  sm:text-lg;
+   hover:text-custom50 
+    transition-colors duration-300 ease-in-out
+  }
 }
 
-button-hover {
-  @apply hover:bg-custom700 hover:border-custom700 hover:text-custom50;
-}
-
-.button {
-  @apply px-4 py-1 mr-1 
-  border border-custom500 rounded-full
-  text-basic
-  whitespace-nowrap
-
-  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
-  transition-colors duration-300 ease-in-out
-
-  md:px-6 
-  lg:px-8;
-}
-
-.button-menu {
-  @apply w-[46px] h-[46px] ml-1
-  border border-custom500 rounded-full
-  text-basic 
-
-  hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+@layer components {
+  .border-green {
+    @apply border border-custom500;
+  }
   
-  transition-colors duration-300 ease-in-out;
+  .text-basic {
+    @apply text-custom500
+    text-sm
+    
+    sm:text-lg;
+  }
+
+  .primary-btn {
+    @apply 
+    px-4 py-1 mr-1 
+    border border-custom500 rounded-full
+    hover:bg-custom700 hover:border-custom700
+
+    md:px-6 
+    lg:px-8;
+  }
+
+  .circle-btn {
+    @apply w-[46px] h-[46px]
+    border border-custom500 rounded-full
+    flex justify-center items-center 
+    text-basic 
+  
+    hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+    
+    transition-colors duration-300 ease-in-out;
+  }
+
+  .plain-button {
+    @apply text-basic
+  
+    hover:text-custom700
+    transition-colors duration-300 ease-in-out;
+  }
+
+  .button-clicked {
+    @apply bg-custom700 border-custom700 text-custom50;
+  }
 }
+
 
 .header-wrapper {
   @apply flex flex-[1] flex-row;
@@ -101,25 +143,6 @@ button-hover {
   lg:flex;
 }
 
-.header-button {
-  @apply text-basic
-
-  hover:text-custom700
-  transition-colors duration-300 ease-in-out;
-}
-
-.button-clicked {
-  @apply bg-custom700 border-custom700 text-custom50;
-}
-
-.menu-clicked {
-  @apply border-custom700 text-custom700;
-}
-
-.menu-hamburger {
-  @apply button-menu flex justify-center items-center ml-0;
-}
-
 @layer utilities {
   @keyframes drop-show {
     0% {
@@ -131,7 +154,6 @@ button-hover {
       opacity: 1;
     }
   }
-
 
   @keyframes drop-hide {
     0% {
@@ -199,38 +221,6 @@ button-hover {
   group-hover:opacity-100;
 }
 
-.input-container {
-  @apply w-full header-element mr-2
-  flex flex-row justify-between items-center
-  placeholder-custom500 placeholder-opacity-50
-
-  sm:mr-3
-  lg:w-[25%] lg:mr-0;
-}
-
-.input-element {
-  @apply w-full bg-transparent
- placeholder-custom500 placeholder-opacity-50
- focus:outline-none;
-}
-
-@layer base {
-  h1 {
-    @apply text-custom500;
-  }
-
-  h2 {
-    @apply text-custom500 font-bold text-3xl;
-  }
-
-  h3 {
-    @apply text-custom500;
-  }
-
-  h4 {
-    @apply text-custom300;
-  }
-}
 
 .title {
   @apply text-6xl text-custom500 font-bold tracking-tight
@@ -265,9 +255,9 @@ button-hover {
 }
 
 .popup-container {
-  @apply w-[50%] h-[70%] mt-10 ml-10
+  @apply h-[70%] mt-10 ml-10 px-7
   border border-custom500 rounded-2xl rounded-tl-none
-  flex flex-row items-center
+  flex flex-row justify-between items-center
   absolute 
   transition-all duration-100 ease-in-out
 
@@ -306,6 +296,15 @@ button-hover {
   transition-transform duration-300 ease-in-out;
 }
 
+.input-container {
+  @apply w-full header-element mr-2
+  flex flex-row justify-between items-center
+  placeholder-custom500 placeholder-opacity-50
+
+  sm:mr-3
+  lg:w-[25%] lg:mr-0;
+}
+
 .input-focus {
   @apply outline-none 
   border-custom700
@@ -322,8 +321,7 @@ button-hover {
 }
 
 .levelIcon {
-  @apply w-6 h-auto 
-  font-bold;
+  @apply font-bold;
 }
 
 .waterIcon {

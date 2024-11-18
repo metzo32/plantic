@@ -38,7 +38,7 @@ const GardenList = () => {
         const uniqueKey = `${garden.cntntsNo}-${index}`
 
         return (
-          <Link key={uniqueKey} to={`/detail/${uniqueKey}`} state={{ garden }}>
+           <Link key={uniqueKey} to={`/detail/${uniqueKey}`} state={{ garden }}>
             <Cards
               name={garden.cntntsSj}
               nameEng={garden.detailInfo?.plntbneNm || ""}

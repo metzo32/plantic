@@ -15,7 +15,7 @@ export function MenuLarge() {
         <button
           key={index}
           onClick={() => handleClick(index)}
-          className={`header-button ${
+          className={`plain-button ${
             selectedNum === index ? "menu-clicked" : ""
           }`}
         >
@@ -45,7 +45,7 @@ export function MenuSmall() {
     <div className="relative flex justify-center items-center lg:hidden">
       <button
         onClick={handleOpen}
-        className={`menu-hamburger ${isOpened ? "button-clicked" : ""}`}
+        className={`circle-btn ${isOpened ? "button-clicked" : ""}`}
       >
         <RxHamburgerMenu className={`${isOpened ? "text-white" : ""}`} />
       </button>
@@ -55,8 +55,8 @@ export function MenuSmall() {
             <button
               key={index}
               onClick={() => handleClick(index)}
-              className={`header-button ${
-                selectedNum === index ? "menu-clicked" : ""
+              className={`plain-button ${
+                selectedNum === index ? "button-clicked" : ""
               }`}
             >
               {name}

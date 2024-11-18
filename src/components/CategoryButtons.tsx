@@ -1,23 +1,35 @@
 import { useState } from "react";
-import MenuPopups from "./MenuPopups";
 import Triangle from "./Triangle";
 
 export default function CategoryButtons() {
-  const [selected, setSelected] = useState<string | null>(null);
-  const buttonNames = ["난이도", "성장 속도", "햇볕", "물주기"];
+  const [selected, setSelected] = useState<number | null>(null);
+  const buttonNames = ["난이도", "성장", "햇볕", "물"];
+  // const contents = [
+  //   "난이도 관련 내용",
+  //   "성장 속도 관련 내용",
+  //   "햇볕 관련 내용",
+  //   "물주기 관련 내용",
+  // ];
 
-  const handleClick = (name: string) => {
-    setSelected(name === selected ? null : name);
+  const contents = [
+  [<button>상</button>,<button>중</button>,<button>하</button>],
+  [<button>빠른</button>,<button>보통</button>,<button>느린</button>],
+  [<button>많은</button>,<button>보통</button>,<button>적은</button>],
+  [<button>자주</button>,<button>보통</button>,<button>적게</button>],
+  ]
+
+  const handleClick = (index: number) => {
+    setSelected(index === selected ? null : index);
   };
 
   return (
     <>
-      <div className="flex flex-row overflow-x-scroll mt-2 md:mt-5">
-        {buttonNames.map((name) => (
+      <div className="flex flex-row mt-2 md:mt-5">
+        {buttonNames.map((name, index) => (
           <button
-            key={name}
-            className={`button ${selected === name ? "button-clicked" : ""}`}
-            onClick={() => handleClick(name)}
+            key={index}
+            className={`primary-btn ${selected === index ? "button-clicked" : ""}`}
+            onClick={() => handleClick(index)}
           >
             {name}
           </button>
@@ -25,28 +37,10 @@ export default function CategoryButtons() {
       </div>
 
       <div className="main-line">
-        {selected === "난이도" && (
+        {selected !== null && (
           <div className="popup-container">
-           <Triangle/>
-            난이도 관련 내용
-          </div>
-        )}
-        {selected === "성장 속도" && (
-          <div className="popup-container">
-           <Triangle/>
-            성장 속도 관련 내용
-          </div>
-        )}
-        {selected === "햇볕" && (
-          <div className="popup-container">
-           <Triangle/>
-            햇볕 관련 내용
-          </div>
-        )}
-        {selected === "물주기" && (
-          <div className="popup-container">
-           <Triangle/>
-            물주기 관련 내용
+            <Triangle />
+            {contents[selected]}
           </div>
         )}
       </div>
