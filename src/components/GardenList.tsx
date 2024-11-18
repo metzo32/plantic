@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFetchGardenList } from "./hooks/useFetch";
 import Cards from "./CardComponent/Cards";
 import {
@@ -35,18 +36,20 @@ const GardenList = () => {
         const delay = (index % 3) * 0.5;
 
         return (
-          <Cards
-            name={garden.cntntsSj}
-            nameEng={garden.detailInfo?.plntbneNm || ""}
-            tagLevel={level}
-            tagSpeed={speed}
-            tagLight={light}
-            tagWater={water}
-            key={`${garden.cntntsNo}-${index}`}
-            imageSrc={firstImageUrl}
-            altMessage={garden.plantGnrlNm}
-            delay={delay}
-          />
+          <Link to={`/detail/${garden.cntntsNo}-${index}`} state={{ garden }}>
+            <Cards
+              name={garden.cntntsSj}
+              nameEng={garden.detailInfo?.plntbneNm || ""}
+              tagLevel={level}
+              tagSpeed={speed}
+              tagLight={light}
+              tagWater={water}
+              key={`${garden.cntntsNo}-${index}`}
+              imageSrc={firstImageUrl}
+              altMessage={garden.plantGnrlNm}
+              delay={delay}
+            />
+          </Link>
         );
       })}
       <div ref={observerRef} />

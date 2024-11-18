@@ -6,14 +6,7 @@ html {
 }
 
 ::selection {
-  background-color: #FFD700; /* 선택된 영역의 배경색 (노란색) */
-  color: #000000; /* 선택된 텍스트의 색상 (검정색) */
-}
-
-/* Firefox에서 텍스트 선택 색상을 지정하기 위해 */
-::-moz-selection {
-  background-color: #FFD700;
-  color: #000000;
+  @apply bg-custom300 text-custom50
 }
 
 /* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
@@ -50,7 +43,7 @@ html {
   border-green rounded-3xl
 
   overflow-x-hidden  overflow-y-auto
-  sm:p-8;
+  sm:p-8
 }
 
 .border-green {
@@ -205,11 +198,12 @@ button-hover {
 }
 
 .input-container {
-  @apply w-full header-element
+  @apply w-full header-element mr-1
   flex flex-row justify-between items-center
   placeholder-custom500 placeholder-opacity-50
 
-  lg:w-[25%]
+  sm:mr-4
+  lg:w-[25%] lg:mr-0
 }
 
 .input-element {

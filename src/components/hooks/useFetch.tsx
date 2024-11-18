@@ -16,7 +16,7 @@ interface DetailInfoProps {
   watercycleSummerCodeNm: string;
 }
 
-interface GardenItemProps {
+export interface GardenItemProps {
   familyKorNm: string;
   cntntsSj: string;
   rnum: number;
