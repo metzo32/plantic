@@ -56,9 +56,9 @@ export default function Cards({
             {tagWater}
           </div>
 
-          <h2 className="h2 mb-[1%] mt-[3%]">{name}</h2>
-          <h3 className="h3 mb-[1%]">{nameEng}</h3>
-          <h4 className="h4 my-[3%]">{info}</h4>
+          <h2 className="mb-[1%] mt-[3%]">{name}</h2>
+          <h3 className="mb-[1%]">{nameEng}</h3>
+          <h4 className="my-[3%]">{info}</h4>
           <img src={imageSrc} alt={altMessage} className="card-image" />
         </div>
       </motion.div>

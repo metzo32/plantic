@@ -35,8 +35,10 @@ const GardenList = () => {
 
         const delay = (index % 3) * 0.5;
 
+        const uniqueKey = `${garden.cntntsNo}-${index}`
+
         return (
-          <Link to={`/detail/${garden.cntntsNo}-${index}`} state={{ garden }}>
+          <Link key={uniqueKey} to={`/detail/${uniqueKey}`} state={{ garden }}>
             <Cards
               name={garden.cntntsSj}
               nameEng={garden.detailInfo?.plntbneNm || ""}
@@ -44,7 +46,7 @@ const GardenList = () => {
               tagSpeed={speed}
               tagLight={light}
               tagWater={water}
-              key={`${garden.cntntsNo}-${index}`}
+              key={uniqueKey}
               imageSrc={firstImageUrl}
               altMessage={garden.plantGnrlNm}
               delay={delay}

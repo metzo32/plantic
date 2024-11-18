@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* 한글에만 Nanum Gothic 적용 */
 html {
   font-family: "Nunito Sans", sans-serif;
 }
 
 ::selection {
-  @apply bg-custom300 text-custom50
+  @apply bg-custom300 text-custom50;
 }
 
 /* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
@@ -44,7 +48,7 @@ html {
   relative
 
   overflow-x-hidden  overflow-y-auto
-  sm:p-8
+  sm:p-8;
 }
 
 .border-green {
@@ -116,21 +120,18 @@ button-hover {
   @apply button-menu flex justify-center items-center ml-0;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
-  @keyframes drop-down {
+  @keyframes drop-show {
     0% {
       transform: translateY(45px);
       opacity: 0;
     }
     100% {
-      transform: translateY(55px);
+      transform: translateY(60px);
       opacity: 1;
     }
   }
+
 
   @keyframes drop-hide {
     0% {
@@ -151,15 +152,15 @@ button-hover {
     transition-all duration-100 ease-in-out
 
     sm:w-[58px] sm:h-[150px] sm:py-2 
-    sm:rounded-md sm:translate-x-10
+    sm:rounded-md sm:translate-x-10;
   }
 
   .drop-show {
-    animation: drop-down 0.3s ease-in-out forwards;
+    animation: drop-show 0.3s ease-in-out forwards;
   }
 
   .drop-hide {
-    animation: drop-down 0.3s ease-in-out forwards;
+    animation: drop-hide 0.3s ease-in-out forwards;
   }
 }
 
@@ -199,34 +200,36 @@ button-hover {
 }
 
 .input-container {
-  @apply w-full header-element mr-1
+  @apply w-full header-element mr-2
   flex flex-row justify-between items-center
   placeholder-custom500 placeholder-opacity-50
 
-  sm:mr-4
-  lg:w-[25%] lg:mr-0
+  sm:mr-3
+  lg:w-[25%] lg:mr-0;
 }
 
 .input-element {
   @apply w-full bg-transparent
  placeholder-custom500 placeholder-opacity-50
- focus:outline-none
+ focus:outline-none;
 }
 
-.h1 {
-  @apply text-custom500;
-}
+@layer base {
+  h1 {
+    @apply text-custom500;
+  }
 
-.h2 {
-  @apply text-custom500 font-bold text-3xl;
-}
+  h2 {
+    @apply text-custom500 font-bold text-3xl;
+  }
 
-.h3 {
-  @apply text-custom500;
-}
+  h3 {
+    @apply text-custom500;
+  }
 
-.h4 {
-  @apply text-custom300;
+  h4 {
+    @apply text-custom300;
+  }
 }
 
 .title {
@@ -289,7 +292,7 @@ button-hover {
   justify-between items-center
 
   sm:px-5
-  lg:px-6
+  lg:px-6;
 }
 
 .card-container {
