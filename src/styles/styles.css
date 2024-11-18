@@ -41,6 +41,7 @@ html {
 .page-container {
   @apply h-full p-4
   border-green rounded-3xl
+  relative
 
   overflow-x-hidden  overflow-y-auto
   sm:p-8
