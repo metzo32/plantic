@@ -5,6 +5,17 @@ html {
   font-family: "Nunito Sans", sans-serif;
 }
 
+::selection {
+  background-color: #FFD700; /* 선택된 영역의 배경색 (노란색) */
+  color: #000000; /* 선택된 텍스트의 색상 (검정색) */
+}
+
+/* Firefox에서 텍스트 선택 색상을 지정하기 위해 */
+::-moz-selection {
+  background-color: #FFD700;
+  color: #000000;
+}
+
 /* 웹킷 기반 브라우저 (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 10px;
@@ -53,6 +64,10 @@ html {
   sm:text-lg;
 }
 
+button-hover {
+  @apply hover:bg-custom700 hover:border-custom700 hover:text-custom50;
+}
+
 .button {
   @apply px-4 py-1 mr-1 
   border border-custom500 rounded-full
@@ -76,6 +91,18 @@ html {
   transition-colors duration-300 ease-in-out;
 }
 
+.header-wrapper {
+  @apply flex flex-[1] flex-row;
+}
+
+.header-menu-container {
+  @apply header-element
+  flex-[4] mr-5 border
+  hidden 
+  
+  lg:flex;
+}
+
 .header-button {
   @apply text-basic
 
@@ -85,6 +112,61 @@ html {
 
 .button-clicked {
   @apply bg-custom700 border-custom700 text-custom50;
+}
+
+.menu-clicked {
+  @apply border-custom700 text-custom700;
+}
+
+.menu-hamburger {
+  @apply button-menu flex justify-center items-center ml-0;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes drop-down {
+    0% {
+      transform: translateY(45px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(55px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes drop-hide {
+    0% {
+      transform: translateY(55px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(45px);
+      opacity: 0;
+    }
+  }
+
+  .menu-drop {
+    @apply w-[52px] h-[120px] py-2
+    border-green rounded-lg
+    flex flex-col justify-between items-center
+    absolute top-0 left-0
+    transition-all duration-100 ease-in-out
+
+    sm:w-[58px] sm:h-[150px] sm:py-2 
+    sm:rounded-md sm:translate-x-10
+  }
+
+  .drop-show {
+    animation: drop-down 0.3s ease-in-out forwards;
+  }
+
+  .drop-hide {
+    animation: drop-down 0.3s ease-in-out forwards;
+  }
 }
 
 .tag {
@@ -103,18 +185,15 @@ html {
 }
 
 .tag.hoverSm {
-  @apply
-  hover:w-[120px]
+  @apply hover:w-[120px];
 }
 
 .tag.hoverMd {
-  @apply
-  hover:w-[150px]
+  @apply hover:w-[150px];
 }
 
 .tag.hoverLg {
-  @apply
-  hover:w-[190px]
+  @apply hover:w-[190px];
 }
 
 .tag-span {
@@ -122,12 +201,21 @@ html {
 
   group-hover:block
   group-hover:mx-3
-  group-hover:opacity-100
+  group-hover:opacity-100;
+}
+
+.input-container {
+  @apply w-full header-element
+  flex flex-row justify-between items-center
+  placeholder-custom500 placeholder-opacity-50
+
+  lg:w-[25%]
 }
 
 .input-element {
-  @apply w-[100%] header-element input-focus
- placeholder-custom500 placeholder-opacity-50;
+  @apply w-full bg-transparent
+ placeholder-custom500 placeholder-opacity-50
+ focus:outline-none
 }
 
 .h1 {
@@ -169,6 +257,15 @@ html {
   md:my-4;
 }
 
+.sub-line {
+  @apply w-full h-[1px] my-2 
+    border-t
+    border-custom500
+    relative
+  
+    md:hidden;
+}
+
 .popup-container {
   @apply w-[50%] h-[70%] mt-10 ml-10
   border border-custom500 rounded-2xl rounded-tl-none
@@ -180,28 +277,24 @@ html {
 }
 
 .popup-tri {
-  @apply
-  fill-custom500
-  absolute top-0 left-0 -translate-y-full -translate-x-[1px] z-10
+  @apply fill-custom500
+  absolute top-0 left-0 -translate-y-full -translate-x-[1px] z-10;
 }
 
 .popup-bg {
-  @apply
-  fill-custom50
-  absolute top-0 left-0 -translate-y-full
+  @apply fill-custom50
+  absolute top-0 left-0 -translate-y-full;
 }
 
-
 .header-element {
-  @apply h-[46px] py-2 px-6
+  @apply h-[46px] py-2 px-4
   border-green rounded-full 
   bg-transparent 
   text-basic 
-  justify-between items-center;
-}
+  justify-between items-center
 
-.input-container {
-  @apply relative;
+  sm:px-5
+  lg:px-6
 }
 
 .card-container {
@@ -216,11 +309,11 @@ html {
 }
 
 .input-focus {
-  @apply focus:outline-none 
-  focus:border-custom700
-  focus:ring-1
-  focus:ring-custom700
-  focus:text-custom700;
+  @apply outline-none 
+  border-custom700
+  ring-1
+  ring-custom700
+  text-custom700;
 }
 
 .icon-general {

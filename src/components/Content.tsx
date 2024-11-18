@@ -6,7 +6,7 @@ export default function Content() {
     <div>
       <h1 className="title mt-[6.5rem]">Plantic</h1>
 
-      <hr className="hr md:hidden" />
+      <hr className="sub-line" />
       <CategoryButtons />
 
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-between mt-11">

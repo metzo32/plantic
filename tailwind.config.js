@@ -18,10 +18,6 @@ module.exports = {
         custom900: '#2a4b1c', 
         custom950: '#13290a', 
       },
-
-      height: {
-        '75p': '75%',
-      }
     },
     
   },
