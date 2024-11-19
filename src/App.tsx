@@ -1,16 +1,13 @@
-import React from "react";
 import "./styles/styles.css";
-import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+// import { configureStore } from "redux";
+
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import DetailPage from "./pages/DetailPage";
 
-const App: React.FC = () => {
+const App = () => {
 
   return (
     <Router>

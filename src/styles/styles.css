@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 한글에만 Nanum Gothic 적용 */
 html {
   font-family: "Nunito Sans", sans-serif;
 }
@@ -39,7 +38,7 @@ html {
   @apply min-w-[320px] w-screen h-screen p-5
   bg-custom50
   overflow-x-hidden 
-  sm:p-8;
+  sm:p-8
 }
 
 .page-container {
@@ -79,6 +78,7 @@ html {
     @apply 
     text-basic
     whitespace-nowrap
+    cursor-pointer
   
    hover:text-custom50 
     transition-colors duration-300 ease-in-out
@@ -113,7 +113,7 @@ html {
     flex justify-center items-center 
     text-basic 
   
-    hover:bg-custom700 hover:border-custom700 hover:text-custom50 
+    hover:bg-custom700 hover:border-custom700
     
     transition-colors duration-300 ease-in-out;
   }
@@ -127,6 +127,17 @@ html {
 
   .button-clicked {
     @apply bg-custom700 border-custom700 text-custom50;
+  }
+
+  .plain-clicked {
+    @apply text-custom700 font-bold 
+  }
+
+
+  .grid-container {
+    @apply
+    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 
+    justify-between mt-11
   }
 }
 
@@ -186,6 +197,7 @@ html {
   }
 }
 
+/* 카드 별 레벨 아이콘 */
 .tag {
   @apply w-[45px] h-[45px] mr-1 
   flex justify-center items-center
@@ -230,7 +242,7 @@ html {
 }
 
 .card-image {
-  @apply w-full aspect-[1/1] object-cover rounded-[5%];
+  @apply w-full aspect-square object-cover rounded-[5%];
 }
 
 .main-line {
@@ -255,24 +267,37 @@ html {
 }
 
 .popup-container {
-  @apply h-[70%] mt-10 ml-10 px-7
+  @apply min-w-[230px] h-[50px] mt-10 ml-2 px-8
   border border-custom500 rounded-2xl rounded-tl-none
   flex flex-row justify-between items-center
   absolute 
   transition-all duration-100 ease-in-out
 
-  animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out;
+  animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out
+
+  sm:w-[240px] sm:h-[70px] sm:ml-9 sm:px-10
 }
 
 .popup-tri {
-  @apply fill-custom500
-  absolute top-0 left-0 -translate-y-full -translate-x-[1px] z-10;
+  @apply 
+  stroke-custom500
+  absolute top-0 left-0 -translate-y-[27px] -translate-x-[2px] z-10;
 }
 
 .popup-bg {
-  @apply fill-custom50
-  absolute top-0 left-0 -translate-y-full;
+  @apply 
+  fill-custom50
+  absolute top-0 left-0 -translate-y-[22px]
 }
+
+.popup-tri.mobile {
+ @apply top-[13px] left-[0.5px]
+}
+
+.popup-bg.mobile {
+  @apply top-[11px] left-[0px]
+ }
+ 
 
 .header-element {
   @apply h-[46px] py-2 px-4

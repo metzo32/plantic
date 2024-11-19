@@ -16,7 +16,7 @@ export function MenuLarge() {
           key={index}
           onClick={() => handleClick(index)}
           className={`plain-button ${
-            selectedNum === index ? "menu-clicked" : ""
+            selectedNum === index ? "plain-clicked" : ""
           }`}
         >
           {name}
@@ -56,7 +56,7 @@ export function MenuSmall() {
               key={index}
               onClick={() => handleClick(index)}
               className={`plain-button ${
-                selectedNum === index ? "button-clicked" : ""
+                selectedNum === index ? "plain-clicked" : ""
               }`}
             >
               {name}

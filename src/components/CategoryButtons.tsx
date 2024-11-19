@@ -12,10 +12,10 @@ export default function CategoryButtons() {
   // ];
 
   const contents = [
-  [<button>상</button>,<button>중</button>,<button>하</button>],
-  [<button>빠른</button>,<button>보통</button>,<button>느린</button>],
-  [<button>많은</button>,<button>보통</button>,<button>적은</button>],
-  [<button>자주</button>,<button>보통</button>,<button>적게</button>],
+  [<button className={`plain-button`}>어려운</button>,<button className={`plain-button`}>보통</button>,<button className={`plain-button`}>쉬운</button>],
+  [<button className={`plain-button`}>빠른</button>,<button className={`plain-button`}>보통</button>,<button className={`plain-button`}>느린</button>],
+  [<button className={`plain-button`}>많은</button>,<button className={`plain-button`}>보통</button>,<button className={`plain-button`}>적은</button>],
+  [<button className={`plain-button`}>자주</button>,<button className={`plain-button`}>보통</button>,<button className={`plain-button`}>적게</button>],
   ]
 
   const handleClick = (index: number) => {

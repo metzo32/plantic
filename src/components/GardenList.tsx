@@ -21,6 +21,7 @@ const GardenList = () => {
 
   return (
     <>
+    <div className="grid-container">
       {gardenList.map((garden, index) => {
         const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";
 
@@ -55,6 +56,7 @@ const GardenList = () => {
         );
       })}
       <div ref={observerRef} />
+      </div>
     </>
   );
 };
