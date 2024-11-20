@@ -11,6 +11,10 @@ import { MdSunny } from "react-icons/md";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { MdCloud } from "react-icons/md";
 
+import { FaTemperatureHalf } from "react-icons/fa6";
+import { IoWaterOutline } from "react-icons/io5";
+
+
 import { FaQuestion } from "react-icons/fa";
 
 export function LevNum01() {
@@ -90,6 +94,24 @@ export function LevWater03() {
 export function LevWater04() {
   return (
     <IconWaterf04 className="icon-general waterIcon" />
+  );
+}
+
+export function IconTemp() {
+  return (
+    <FaTemperatureHalf className="icon-general " />
+  );
+}
+
+export function IconSun() {
+  return (
+    <MdOutlineWbSunny className="icon-general" />
+  );
+}
+
+export function IconWater() {
+  return (
+    <IoWaterOutline className="icon-general" />
   );
 }
 

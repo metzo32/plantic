@@ -34,21 +34,6 @@ html {
   scrollbar-color: #4caf50 #f1f1f1; /* 스크롤바 색상(thumb)과 배경색(track) */
 }
 
-.wrapper {
-  @apply min-w-[320px] w-screen h-screen p-5
-  bg-custom50
-  overflow-x-hidden 
-  sm:p-8;
-}
-
-.page-container {
-  @apply h-full p-4
-  border-green rounded-3xl
-  relative
-
-  overflow-x-hidden  overflow-y-auto
-  sm:p-8;
-}
 
 @layer base {
   div {
@@ -98,6 +83,7 @@ html {
 }
 
 @layer components {
+  
   .border-green {
     @apply border border-custom500;
   }
@@ -134,11 +120,11 @@ html {
   }
 
   .plain-clicked {
-    @apply text-custom700 font-bold;
+    @apply text-custom700 
   }
 
   .plain-underline-clicked {
-    @apply text-custom700 font-bold
+    @apply text-custom700 
     border-b-2 border-custom700
   }
 
@@ -149,7 +135,7 @@ html {
 }
 
 .header-wrapper {
-  @apply flex flex-[1] flex-row;
+  @apply flex flex-[1] flex-row relative z-50;
 }
 
 .header-menu-container {
@@ -161,6 +147,21 @@ html {
 }
 
 @layer utilities {
+  .wrapper {
+    @apply min-w-[320px] w-screen h-screen p-5
+    bg-custom50
+    overflow-x-hidden 
+    sm:p-8;
+  }
+  
+  .page-container {
+    @apply h-full p-4
+    border-green rounded-3xl
+    relative
+  
+    overflow-x-hidden  overflow-y-auto
+    sm:p-8;
+  }
 
   .detail-page {
     @apply w-full h-screen border border-red-600 mt-5
@@ -183,12 +184,13 @@ html {
     lg:w-[61.8%] lg:h-[70%]
   }
 
-  .detail-img {
+  .detail-img-container {
     @apply
     w-[61.8%]
     aspect-square
+    bg-cover
 
-    lg:w-[38.2%]
+    /* lg:w-[38.2%] */
   }
 
   .no-margin {

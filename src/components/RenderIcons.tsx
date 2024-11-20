@@ -132,3 +132,8 @@ export const getWaterIcon = (waterData: number | undefined) => {
       return null;
   }
 };
+
+// export const KnobIcons = () => {
+//   return
+//   <IconWithLabel Icon={} label=""/>
+// }

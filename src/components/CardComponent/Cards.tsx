@@ -59,7 +59,6 @@ export default function Cards({
           <h2>{name}</h2>
           <h3>{nameEng}</h3>
           <h4>{info ? `${info}에서 서식하는 식물` : null}</h4>
-
           <img src={imageSrc} alt={altMessage} className="card-image" />
         </div>
       </motion.div>
