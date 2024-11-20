@@ -1,13 +1,38 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import CustomKnob from "../components/CustomKnob";
 
 const DetailPage: React.FC = () => {
   const location = useLocation();
-//   const { garden } = location.state;
+  const { garden } = location.state;
 
   return (
-    <div className="detail-page border h-[80%] border-red-600 mt-4 sm:mt-8">
-      
+    <div className="detail-page">
+      <div className="knobs-container">
+        <h2 className="no-margin">{garden.cntntsSj}</h2>
+        <div className="w-full h-[85%] flex justify-between items-center bg-yellow-600">
+          <CustomKnob />
+          <CustomKnob />
+          <CustomKnob />
+        </div>
+        <div className="w-full flex justify-center items-center">
+            <button>화살표</button>
+            <button>화살표</button>
+        </div>
+      </div>
+      <img
+        src={garden.imgUrl}
+        alt={garden.plantGnrlNm}
+        className="detail-img"
+      />
+      {/* <h1>{garden.cntntsSj}</h1>
+      <p>과명: {garden.familyKorNm}</p>
+      <p>일반명: {garden.plantGnrlNm}</p>
+      <p>관리 수준: {garden.detailInfo?.managelevelCodeNm}</p>
+      <p>성장 속도: {garden.detailInfo?.grwtveCodeNm}</p>
+      <p>빛 요구량: {garden.detailInfo?.lighttdemanddoCodeNm}</p>
+      <p>여름 물 주기: {garden.detailInfo?.watercycleSummerCodeNm}</p>
+      <img src={garden.imgUrl} alt={garden.plantGnrlNm} className="card-image" /> */}
     </div>
   );
 };

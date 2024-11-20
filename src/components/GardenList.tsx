@@ -12,11 +12,11 @@ const GardenList = () => {
   const { gardenList, loading, error, observerRef } = useFetchGardenList();
 
   if (loading && gardenList.length === 0) {
-    return <div className="text-basic">Loading...</div>;
+    return <h1>Loading...</h1>;
   }
 
   if (error) {
-    return <div className="text-basic">Error</div>;
+    return <h1>Error</h1>;
   }
 
   return (
@@ -39,7 +39,7 @@ const GardenList = () => {
         const uniqueKey = `${garden.cntntsNo}-${index}`
 
         return (
-           <Link key={uniqueKey} to={`/detail/${uniqueKey}`} state={{ garden }}>
+           <Link key={uniqueKey} to={`/detail/${uniqueKey}`} state={{ garden }} title="자세히 보기">
             <Cards
               name={garden.cntntsSj}
               nameEng={garden.detailInfo?.plntbneNm || ""}
@@ -48,6 +48,7 @@ const GardenList = () => {
               tagLight={light}
               tagWater={water}
               key={uniqueKey}
+              info={garden.detailInfo?.orgplceInfo}
               imageSrc={firstImageUrl}
               altMessage={garden.plantGnrlNm}
               delay={delay}

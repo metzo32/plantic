@@ -14,7 +14,6 @@ import {
   LevWater03,
   LevWater04,
 } from "./Icons";
-import React from "react";
 
 type IconProps = {
   Icon: React.ElementType;

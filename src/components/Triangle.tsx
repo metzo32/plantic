@@ -22,10 +22,10 @@ export default function Triangle() {
   return (
     <>
       {isMobile ? (
-     <>
-     <PopupTriSm className="popup-tri mobile" />
-     <PopupBgSm className="popup-bg mobile" />
-   </>
+        <>
+          <PopupTriSm className="popup-tri mobile" />
+          <PopupBgSm className="popup-bg mobile" />
+        </>
       ) : (
         <>
           <PopupTri className="popup-tri" />

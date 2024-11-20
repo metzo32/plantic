@@ -56,9 +56,10 @@ export default function Cards({
             {tagWater}
           </div>
 
-          <h2 className="mb-[1%] mt-[3%]">{name}</h2>
-          <h3 className="mb-[1%]">{nameEng}</h3>
-          <h4 className="my-[3%]">{info}</h4>
+          <h2>{name}</h2>
+          <h3>{nameEng}</h3>
+          <h4>{info ? `${info}에서 서식하는 식물` : null}</h4>
+
           <img src={imageSrc} alt={altMessage} className="card-image" />
         </div>
       </motion.div>

@@ -38,7 +38,7 @@ html {
   @apply min-w-[320px] w-screen h-screen p-5
   bg-custom50
   overflow-x-hidden 
-  sm:p-8
+  sm:p-8;
 }
 
 .page-container {
@@ -50,22 +50,36 @@ html {
   sm:p-8;
 }
 
-
 @layer base {
+  div {
+    @apply text-custom500 text-sm 
+    sm:text-lg;
+  }
+
   h1 {
     @apply text-custom500;
   }
 
   h2 {
-    @apply text-custom500 font-bold text-3xl;
+    @apply text-custom500 font-bold text-3xl
+    mb-[1%] mt-[3%]
   }
 
   h3 {
-    @apply text-custom500;
+    @apply text-custom500
+    mb-[1%]
   }
 
   h4 {
-    @apply text-custom300;
+    @apply text-custom300
+    my-[3%]
+  }
+
+  p {
+    @apply text-custom500
+    text-sm
+    
+    sm:text-lg;
   }
 
   input {
@@ -75,13 +89,11 @@ html {
   }
 
   button {
-    @apply 
-    text-basic
-    whitespace-nowrap
+    @apply whitespace-nowrap
     cursor-pointer
   
    hover:text-custom50 
-    transition-colors duration-300 ease-in-out
+    transition-colors duration-300 ease-in-out;
   }
 }
 
@@ -89,17 +101,9 @@ html {
   .border-green {
     @apply border border-custom500;
   }
-  
-  .text-basic {
-    @apply text-custom500
-    text-sm
-    
-    sm:text-lg;
-  }
 
   .primary-btn {
-    @apply 
-    px-4 py-1 mr-1 
+    @apply px-4 py-1 mr-1 
     border border-custom500 rounded-full
     hover:bg-custom700 hover:border-custom700
 
@@ -111,17 +115,17 @@ html {
     @apply w-[46px] h-[46px]
     border border-custom500 rounded-full
     flex justify-center items-center 
-    text-basic 
+     
   
     hover:bg-custom700 hover:border-custom700
     
     transition-colors duration-300 ease-in-out;
   }
 
+
   .plain-button {
-    @apply text-basic
-  
-    hover:text-custom700
+    @apply hover:text-custom700 pt-1
+    border-b-2 border-transparent
     transition-colors duration-300 ease-in-out;
   }
 
@@ -130,17 +134,19 @@ html {
   }
 
   .plain-clicked {
-    @apply text-custom700 font-bold 
+    @apply text-custom700 font-bold;
   }
 
+  .plain-underline-clicked {
+    @apply text-custom700 font-bold
+    border-b-2 border-custom700
+  }
 
   .grid-container {
-    @apply
-    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 
-    justify-between mt-11
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 
+    justify-between mt-11;
   }
 }
-
 
 .header-wrapper {
   @apply flex flex-[1] flex-row;
@@ -155,6 +161,40 @@ html {
 }
 
 @layer utilities {
+
+  .detail-page {
+    @apply w-full h-screen border border-red-600 mt-5
+    flex flex-col-reverse justify-end items-center
+
+    sm:mt-10
+
+    lg:flex-row lg:h-[89%] lg:justify-between
+  }
+
+  .knobs-container {
+    @apply
+    w-full h-auto
+    border border-blue-600 mr-10 
+    hidden justify-between items-start 
+    relative
+    
+    sm:flex sm:flex-col
+
+    lg:w-[61.8%] lg:h-[70%]
+  }
+
+  .detail-img {
+    @apply
+    w-[61.8%]
+    aspect-square
+
+    lg:w-[38.2%]
+  }
+
+  .no-margin {
+    @apply m-0
+  }
+
   @keyframes drop-show {
     0% {
       transform: translateY(45px);
@@ -233,7 +273,6 @@ html {
   group-hover:opacity-100;
 }
 
-
 .title {
   @apply text-6xl text-custom500 font-bold tracking-tight
   
@@ -267,43 +306,44 @@ html {
 }
 
 .popup-container {
-  @apply min-w-[230px] h-[50px] mt-10 ml-2 px-8
-  border border-custom500 rounded-2xl rounded-tl-none
+  @apply min-w-[230px] h-[50px] mt-5 ml-2 px-8
+  border border-custom500 rounded-xl rounded-tl-none
   flex flex-row justify-between items-center
   absolute 
   transition-all duration-100 ease-in-out
 
-  animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out
 
-  sm:w-[240px] sm:h-[70px] sm:ml-9 sm:px-10
+  animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out
+  
+  sm:w-[240px] sm:h-[70px] sm:ml-9 sm:px-8 sm:mt-10
+  sm:rounded-2xl sm:rounded-tl-none;
 }
 
+
+
 .popup-tri {
-  @apply 
-  stroke-custom500
+  @apply stroke-custom500
   absolute top-0 left-0 -translate-y-[27px] -translate-x-[2px] z-10;
 }
 
 .popup-bg {
-  @apply 
-  fill-custom50
-  absolute top-0 left-0 -translate-y-[22px]
+  @apply fill-custom50
+  absolute top-0 left-0 -translate-y-[22px];
 }
 
 .popup-tri.mobile {
- @apply top-[13px] left-[0.5px]
+  @apply top-[13px] left-[0.5px];
 }
 
 .popup-bg.mobile {
-  @apply top-[11px] left-[0px]
- }
- 
+  @apply top-[11px] left-[0px];
+}
 
 .header-element {
   @apply h-[46px] py-2 px-4
   border-green rounded-full 
   bg-transparent 
-  text-basic 
+   
   justify-between items-center
 
   sm:px-5
