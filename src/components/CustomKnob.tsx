@@ -35,7 +35,7 @@ export default function CustomKnob() {
                 })}
               />
             </div>
-            <span className="text-lg font-semibold">{item.title}</span>
+            <span className="text-lg font-light">{item.title}</span>
             <span className="text-sm text-gray-500">{item.percentage}</span>
           </div>
         </div>

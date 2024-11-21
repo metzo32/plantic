@@ -15,6 +15,10 @@ import { ReactComponent as IconTemperature } from "../assets/svg/icon_temp.svg"
 import { ReactComponent as IconLightLarge } from "../assets/svg/icon_light.svg"
 import { ReactComponent as IconWaterLarge } from "../assets/svg/icon_water.svg"
 
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
+
 import { FaQuestion } from "react-icons/fa";
 
 
@@ -114,6 +118,18 @@ export function IconLight() {
 export function IconWater() {
   return (
     <IconWaterLarge className="icon-general h-full" />
+  );
+}
+
+export function ArrowLeft() {
+  return (
+    <IoIosArrowBack className="icon-general"/>
+  );
+}
+
+export function ArrowRight() {
+  return (
+    <IoIosArrowForward className="icon-general"/>
   );
 }
 

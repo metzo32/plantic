@@ -43,9 +43,9 @@ export default function CategoryButtons() {
 
   return (
     <>
-      <div className="flex flex-row mt-2 md:mt-5">
+      <div className="category-btn-container">
         {buttonNames.map((name, index) => (
-          <label key={index} className="flex items-center cursor-pointer mr-4">
+          <label key={index} className="flex items-center cursor-pointer mr-1 sm:mr-4">
             <input
               type="radio"
               name="category"

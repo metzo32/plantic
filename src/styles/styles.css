@@ -46,18 +46,21 @@ html {
   }
 
   h2 {
-    @apply text-custom700 font-bold text-3xl
-    mb-[1%] mt-[3%]
+    @apply text-custom700 font-bold text-2xl
+    mb-[1%]
+     /* mt-[3%] */
   }
 
   h3 {
-    @apply text-custom700
+    @apply text-custom500
     mb-[1%]
   }
 
   h4 {
-    @apply text-custom300
-    my-[3%]
+    @apply text-gray-500
+    font-thin
+    text-sm
+    mt-[3%]
   }
 
   p {
@@ -89,11 +92,13 @@ html {
   }
 
   .primary-btn {
-    @apply px-4 py-1 mr-1 
-    border border-custom700 rounded-full bg-custom50
+    @apply px-3 py-1 mr-1 
+    border border-custom700 rounded-full bg-customPoint
+    
     shadow-md
     hover:bg-custom700 hover:border-custom700
 
+    sm:px-4
     md:px-6 
     lg:px-8;
   }
@@ -101,19 +106,21 @@ html {
   .circle-btn {
     @apply w-[46px] h-[46px]
     border border-custom700 rounded-full
+    text-custom700
     flex justify-center items-center 
+    transition-colors duration-300 ease-in-out
      
-  
     hover:bg-custom700 hover:border-custom700
-    
-    transition-colors duration-300 ease-in-out;
   }
 
 
   .plain-button {
-    @apply hover:text-custom700 pt-1
+    @apply pt-1
+    text-custom500
     border-b-2 border-transparent
-    transition-colors duration-300 ease-in-out;
+    transition-colors duration-300 ease-in-out
+
+    hover:text-custom700
   }
 
   .button-clicked {
@@ -130,8 +137,11 @@ html {
   }
 
   .grid-container {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 
-    justify-between mt-11;
+    @apply grid grid-cols-1 gap-10 
+    justify-between mt-11
+
+    md:grid-cols-2 
+    lg:grid-cols-3
   }
 }
 
@@ -149,15 +159,16 @@ html {
 
 @layer utilities {
   .wrapper {
-    @apply min-w-[320px] w-screen h-screen px-10 py-5
-    bg-custom-pattern
+    @apply min-w-[240px] w-screen h-screen px-5 py-5
+    bg-custom50
     overflow-x-hidden 
-    sm:px-32 sm:py-8;
+    md:px-32 sm:py-8;
   }
   
   .page-container {
-    @apply h-full p-4 bg-custom50
-    border-green rounded-3xl shadow-xl
+    @apply h-full p-4 bg-custom50 bg-opacity-60
+  rounded-3xl shadow-xl
+    /* backdrop-blur-2xl */
     relative
   
     overflow-x-hidden  overflow-y-auto
@@ -165,7 +176,7 @@ html {
   }
 
   .detail-page {
-    @apply w-full h-screen border border-red-600 mt-5
+    @apply w-full h-screen mt-5
     flex flex-col-reverse justify-end items-center
 
     sm:mt-10
@@ -173,39 +184,41 @@ html {
     lg:flex-row lg:h-[89%] lg:justify-between
   }
 
-  .knobs-container {
-    @apply
-    w-full h-auto
-    border border-blue-600 mr-0
-    hidden justify-between items-start 
-    relative
-    
-    sm:flex sm:flex-col
-
-    lg:w-[61.8%] lg:h-[70%] 
-    md:mr-10 
-  }
-
-  .detail-img-container {
-    @apply
-    w-[61.8%]
-    aspect-square
-    bg-cover
-
-    /* lg:w-[38.2%] */
-  }
-
   .no-margin {
     @apply m-0
   }
 
+  .knobs-container {
+    @apply
+    w-full h-[30%] mr-0 px-2 py-4
+    flex flex-col justify-between items-start 
+    bg-custom50 bg-opacity-50
+    rounded-2xl
+    shadow-md
+    relative z-10
+
+    lg:w-[61.8%] lg:h-[70%] 
+  }
+
+  .detail-img-container {
+    @apply
+    
+    w-[61.8%]
+    aspect-square
+    bg-cover
+
+    lg:fixed lg:top-0 lg:right-0 lg:transform lg:-translate-x-20
+    lg:w-[800px]
+  }
+
+
   @keyframes drop-show {
     0% {
-      transform: translateY(45px);
+      transform: translateX(-50%) translateY(45px);
       opacity: 0;
     }
     100% {
-      transform: translateY(60px);
+      transform: translateX(-50%) translateY(60px);
       opacity: 1;
     }
   }
@@ -225,11 +238,10 @@ html {
     @apply w-[52px] h-[120px] py-2
     border-green rounded-lg
     flex flex-col justify-between items-center
-    absolute top-0 left-0
+    absolute top-0 left-1/2 transform -translate-x-1/2
     transition-all duration-100 ease-in-out
 
     sm:w-[58px] sm:h-[150px] sm:py-2 
-    sm:rounded-md sm:translate-x-10;
   }
 
   .drop-show {
@@ -241,9 +253,16 @@ html {
   }
 }
 
+.tags-container {
+  @apply
+  flex flex-row 
+  mb-[5%] 
+  /* mt-[4%] */
+}
+
 /* 카드 별 레벨 아이콘 */
 .tag {
-  @apply w-[45px] h-[45px] mr-1 
+  @apply w-[35px] h-[35px] mr-1 
   flex justify-center items-center
   border border-custom700 rounded-full
   text-base text-custom700
@@ -251,6 +270,7 @@ html {
   overflow-hidden
   transition-all duration-300 ease-in-out
 
+  sm:w-[45px] sm:h-[45px]
   md:text-lg
 
   hover:w-[120px]
@@ -285,13 +305,13 @@ html {
 }
 
 .card-image {
-  @apply w-full aspect-square object-cover rounded-[5%];
+  @apply w-full aspect-square object-cover
 }
 
 .main-line {
   @apply w-full h-[30px] my-2 
   border-t
-  border-custom700
+  border-custom500
   relative
   
   sm:h-[60px]
@@ -309,13 +329,20 @@ html {
     md:hidden;
 }
 
+.category-btn-container {
+  @apply
+  mt-2 
+  flex flex-row
+  md:mt-5
+}
+
 .popup-container {
-  @apply min-w-[230px] h-[50px] mt-5 ml-2 px-8
+  @apply 
+  min-w-[230px] h-[50px] mt-5 ml-2 px-8
   border border-custom700 rounded-xl rounded-tl-none
   flex flex-row justify-between items-center
-  absolute 
+  absolute
   transition-all duration-100 ease-in-out
-
 
   animate-fade-down animate-once animate-duration-500 animate-delay-100 animate-ease-in-out
   
@@ -344,7 +371,8 @@ html {
 .header-element {
   @apply h-[46px] py-2 px-4
   border-green rounded-full 
-  bg-transparent 
+  bg-custom50 bg-opacity-50
+  shadow-sm
    
   justify-between items-center
 
@@ -358,10 +386,14 @@ html {
 }
 
 .card-container {
-  @apply w-full bg-custom50 mt-10
-  border-t border-custom300
+  @apply 
+  w-full h-full
+  bg-custom50 bg-opacity-50 mt-10 rounded-b-3xl
+  /* border-t border-custom500 */
   flex flex-col 
   cursor-pointer
+  overflow-hidden
+  shadow-lg
 
   hover:scale-[102%] 
 
@@ -372,7 +404,7 @@ html {
   @apply w-full header-element mr-2
   flex flex-row justify-between items-center
   placeholder-custom700 placeholder-opacity-50
-
+  bg-custom50
   sm:mr-3
   lg:w-[25%] lg:mr-0;
 }

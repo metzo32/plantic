@@ -49,16 +49,18 @@ export default function Cards({
         transition={{ duration: 0.7, delay }} // delay 추가
       >
         <div className="card-container">
-          <div className="flex flex-row mb-[2%] mt-[4%]">
-            {tagLevel}
-            {tagSpeed}
-            {tagLight}
-            {tagWater}
-          </div>
+          <div className="w-full h-full flex flex-col justify-between p-4">
+            <div className="tags-container">
+              {tagLevel}
+              {tagSpeed}
+              {tagLight}
+              {tagWater}
+            </div>
 
-          <h2>{name}</h2>
-          <h3>{nameEng}</h3>
-          <h4>{info ? `${info}에서 서식하는 식물` : null}</h4>
+            <h2>{name}</h2>
+            <h3>{nameEng}</h3>
+            <h4>{info ? `${info}에서 서식하는 식물` : null}</h4>
+          </div>
           <img src={imageSrc} alt={altMessage} className="card-image" />
         </div>
       </motion.div>

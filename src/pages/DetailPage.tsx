@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import CustomKnob from "../components/CustomKnob";
 import image from "../assets/images/plant_profile_01.png";
+import { ArrowLeft, ArrowRight } from "../components/Icons";
 
 const DetailPage: React.FC = () => {
   const location = useLocation();
@@ -10,13 +11,17 @@ const DetailPage: React.FC = () => {
   return (
     <div className="detail-page">
       <div className="knobs-container ">
-        <h2 className="no-margin">{garden.cntntsSj}</h2>
+        <h1 className="no-margin text-5xl">{garden.cntntsSj}</h1>
         <div className="w-full h-auto flex justify-between items-center">
           <CustomKnob />
         </div>
         <div className="w-full flex justify-center items-center">
-          <button>화살표</button>
-          <button>화살표</button>
+          <button className="plain-button">
+            <ArrowLeft />
+          </button>
+          <button className="plain-button">
+            <ArrowRight />
+          </button>
         </div>
       </div>
       <div className="detail-img-container">
