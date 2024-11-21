@@ -37,21 +37,21 @@ html {
 
 @layer base {
   div {
-    @apply text-custom500 text-sm 
+    @apply text-custom700 text-sm 
     sm:text-lg;
   }
 
   h1 {
-    @apply text-custom500;
+    @apply text-custom700;
   }
 
   h2 {
-    @apply text-custom500 font-bold text-3xl
+    @apply text-custom700 font-bold text-3xl
     mb-[1%] mt-[3%]
   }
 
   h3 {
-    @apply text-custom500
+    @apply text-custom700
     mb-[1%]
   }
 
@@ -61,7 +61,7 @@ html {
   }
 
   p {
-    @apply text-custom500
+    @apply text-custom700
     text-sm
     
     sm:text-lg;
@@ -69,7 +69,7 @@ html {
 
   input {
     @apply w-full bg-transparent
-    placeholder-custom500 placeholder-opacity-50
+    placeholder-custom700 placeholder-opacity-50
     focus:outline-none;
   }
 
@@ -90,7 +90,8 @@ html {
 
   .primary-btn {
     @apply px-4 py-1 mr-1 
-    border border-custom500 rounded-full
+    border border-custom700 rounded-full bg-custom50
+    shadow-md
     hover:bg-custom700 hover:border-custom700
 
     md:px-6 
@@ -99,7 +100,7 @@ html {
 
   .circle-btn {
     @apply w-[46px] h-[46px]
-    border border-custom500 rounded-full
+    border border-custom700 rounded-full
     flex justify-center items-center 
      
   
@@ -148,15 +149,15 @@ html {
 
 @layer utilities {
   .wrapper {
-    @apply min-w-[320px] w-screen h-screen p-5
-    bg-custom50
+    @apply min-w-[320px] w-screen h-screen px-10 py-5
+    bg-custom-pattern
     overflow-x-hidden 
-    sm:p-8;
+    sm:px-32 sm:py-8;
   }
   
   .page-container {
-    @apply h-full p-4
-    border-green rounded-3xl
+    @apply h-full p-4 bg-custom50
+    border-green rounded-3xl shadow-xl
     relative
   
     overflow-x-hidden  overflow-y-auto
@@ -175,13 +176,14 @@ html {
   .knobs-container {
     @apply
     w-full h-auto
-    border border-blue-600 mr-10 
+    border border-blue-600 mr-0
     hidden justify-between items-start 
     relative
     
     sm:flex sm:flex-col
 
-    lg:w-[61.8%] lg:h-[70%]
+    lg:w-[61.8%] lg:h-[70%] 
+    md:mr-10 
   }
 
   .detail-img-container {
@@ -243,8 +245,8 @@ html {
 .tag {
   @apply w-[45px] h-[45px] mr-1 
   flex justify-center items-center
-  border border-custom500 rounded-full
-  text-base text-custom500
+  border border-custom700 rounded-full
+  text-base text-custom700
   whitespace-nowrap
   overflow-hidden
   transition-all duration-300 ease-in-out
@@ -289,7 +291,7 @@ html {
 .main-line {
   @apply w-full h-[30px] my-2 
   border-t
-  border-custom500
+  border-custom700
   relative
   
   sm:h-[60px]
@@ -301,7 +303,7 @@ html {
 .sub-line {
   @apply w-full h-[1px] my-2 
     border-t
-    border-custom500
+    border-custom700
     relative
   
     md:hidden;
@@ -309,7 +311,7 @@ html {
 
 .popup-container {
   @apply min-w-[230px] h-[50px] mt-5 ml-2 px-8
-  border border-custom500 rounded-xl rounded-tl-none
+  border border-custom700 rounded-xl rounded-tl-none
   flex flex-row justify-between items-center
   absolute 
   transition-all duration-100 ease-in-out
@@ -321,10 +323,8 @@ html {
   sm:rounded-2xl sm:rounded-tl-none;
 }
 
-
-
 .popup-tri {
-  @apply stroke-custom500
+  @apply stroke-custom700
   absolute top-0 left-0 -translate-y-[27px] -translate-x-[2px] z-10;
 }
 
@@ -352,6 +352,11 @@ html {
   lg:px-6;
 }
 
+.detail-icon-box {
+  @apply w-full h-[30px]
+  flex justify-center items-center
+}
+
 .card-container {
   @apply w-full bg-custom50 mt-10
   border-t border-custom300
@@ -366,7 +371,7 @@ html {
 .input-container {
   @apply w-full header-element mr-2
   flex flex-row justify-between items-center
-  placeholder-custom500 placeholder-opacity-50
+  placeholder-custom700 placeholder-opacity-50
 
   sm:mr-3
   lg:w-[25%] lg:mr-0;
@@ -381,7 +386,7 @@ html {
 }
 
 .icon-general {
-  @apply fill-green-700 
+  @apply fill-custom700
   
   group-hover:fill-white
   group-hover:hidden;

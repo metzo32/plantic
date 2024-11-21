@@ -1,10 +1,21 @@
 // @type {import('tailwindcss').Config}
 module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-pattern': "url('../assets/images/bg-wrapper.jpg')",
+      },
       colors: {
         custom50: '#f8fbf6', 
         custom100: '#e1f6d1', 

@@ -11,11 +11,13 @@ import { MdSunny } from "react-icons/md";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { MdCloud } from "react-icons/md";
 
-import { FaTemperatureHalf } from "react-icons/fa6";
-import { IoWaterOutline } from "react-icons/io5";
-
+import { ReactComponent as IconTemperature } from "../assets/svg/icon_temp.svg"
+import { ReactComponent as IconLightLarge } from "../assets/svg/icon_light.svg"
+import { ReactComponent as IconWaterLarge } from "../assets/svg/icon_water.svg"
 
 import { FaQuestion } from "react-icons/fa";
+
+
 
 export function LevNum01() {
   return (
@@ -99,19 +101,19 @@ export function LevWater04() {
 
 export function IconTemp() {
   return (
-    <FaTemperatureHalf className="icon-general " />
-  );
+    <IconTemperature className="icon-general h-full" />
+  )
 }
 
-export function IconSun() {
+export function IconLight() {
   return (
-    <MdOutlineWbSunny className="icon-general" />
+    <IconLightLarge className="icon-general h-full" />
   );
 }
 
 export function IconWater() {
   return (
-    <IoWaterOutline className="icon-general" />
+    <IconWaterLarge className="icon-general h-full" />
   );
 }
 

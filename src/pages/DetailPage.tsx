@@ -9,9 +9,9 @@ const DetailPage: React.FC = () => {
 
   return (
     <div className="detail-page">
-      <div className="knobs-container">
+      <div className="knobs-container ">
         <h2 className="no-margin">{garden.cntntsSj}</h2>
-        <div className="w-full h-[85%] flex justify-between items-center">
+        <div className="w-full h-auto flex justify-between items-center">
           <CustomKnob />
         </div>
         <div className="w-full flex justify-center items-center">
