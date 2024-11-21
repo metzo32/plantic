@@ -15,7 +15,7 @@ const DetailPage: React.FC = () => {
         <div className="w-full h-auto flex justify-between items-center">
           <CustomKnob />
         </div>
-        <div className="w-full flex justify-center items-center">
+        <div className="arrow-box">
           <button className="plain-button">
             <ArrowLeft />
           </button>
@@ -24,6 +24,7 @@ const DetailPage: React.FC = () => {
           </button>
         </div>
       </div>
+
       <div className="detail-img-container">
         <img src={image} alt="profile" className="" />
       </div>

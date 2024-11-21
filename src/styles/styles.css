@@ -181,7 +181,7 @@ html {
 
     sm:mt-10
 
-    lg:flex-row lg:h-[89%] lg:justify-between
+    lg:flex-row lg:h-[89%] lg:justify-between;
   }
 
   .no-margin {
@@ -195,6 +195,7 @@ html {
     bg-custom50 bg-opacity-50
     rounded-2xl
     shadow-md
+    backdrop-blur-sm
     relative z-10
 
     lg:w-[61.8%] lg:h-[70%] 
@@ -334,6 +335,10 @@ html {
   mt-2 
   flex flex-row
   md:mt-5
+}
+
+.arrow-box {
+  @apply w-full flex justify-center items-center
 }
 
 .popup-container {
