@@ -34,7 +34,7 @@ export default function CategoryButtons() {
         key={idx}
         onClick={() => handleContentButtonClick(idx)}
         className={`plain-button ${
-          activeButtonIndex === idx ? "plain-underline-clicked" : ""
+          activeButtonIndex === idx ? "plain-clicked" : ""
         }`}
       >
         {label}

@@ -6,6 +6,9 @@
 
 html {
   font-family: "Nunito Sans", sans-serif;
+  word-break: keep-all;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 ::selection {
@@ -34,7 +37,6 @@ html {
   scrollbar-color: #4caf50 #f1f1f1; /* 스크롤바 색상(thumb)과 배경색(track) */
 }
 
-
 @layer base {
   div {
     @apply text-custom700 text-sm 
@@ -47,20 +49,21 @@ html {
 
   h2 {
     @apply text-custom700 font-bold text-2xl
-    mb-[1%]
-     /* mt-[3%] */
+    mb-[2%]
+     /* mt-[3%] */;
   }
 
   h3 {
     @apply text-custom500
-    mb-[1%]
+    leading-snug
+    mb-[2%];
   }
 
   h4 {
     @apply text-gray-500
     font-thin
     text-sm
-    mt-[3%]
+    mt-[3%];
   }
 
   p {
@@ -86,17 +89,17 @@ html {
 }
 
 @layer components {
-  
   .border-green {
     @apply border border-custom500;
   }
 
   .primary-btn {
     @apply px-3 py-1 mr-1 
-    border border-custom700 rounded-full bg-customPoint
+    rounded-full bg-custom50 bg-opacity-50
+    shadow-custom-green
     
-    shadow-md
     hover:bg-custom700 hover:border-custom700
+    hover:shadow-custom-green
 
     sm:px-4
     md:px-6 
@@ -110,17 +113,17 @@ html {
     flex justify-center items-center 
     transition-colors duration-300 ease-in-out
      
-    hover:bg-custom700 hover:border-custom700
+    hover:bg-custom700 hover:border-custom700;
   }
-
 
   .plain-button {
     @apply pt-1
-    text-custom500
+    text-custom500 leading-snug
     border-b-2 border-transparent
     transition-colors duration-300 ease-in-out
 
-    hover:text-custom700
+    hover:text-custom500
+    hover:border-custom500;
   }
 
   .button-clicked {
@@ -128,20 +131,16 @@ html {
   }
 
   .plain-clicked {
-    @apply text-custom700 
-  }
-
-  .plain-underline-clicked {
-    @apply text-custom700 
-    border-b-2 border-custom700
+    @apply text-custom700
+    border-custom700
   }
 
   .grid-container {
-    @apply grid grid-cols-1 gap-10 
+    @apply grid grid-cols-1 gap-8
     justify-between mt-11
 
     md:grid-cols-2 
-    lg:grid-cols-3
+    lg:grid-cols-3;
   }
 }
 
@@ -160,14 +159,16 @@ html {
 @layer utilities {
   .wrapper {
     @apply min-w-[240px] w-screen h-screen px-5 py-5
-    bg-custom50
+    bg-custom100 bg-opacity-80
     overflow-x-hidden 
-    md:px-32 sm:py-8;
+
+    lg:px-32 sm:px-8 sm:py-8;
   }
-  
+
   .page-container {
-    @apply h-full p-4 bg-custom50 bg-opacity-60
-  rounded-3xl shadow-xl
+    @apply 
+    min-w-[280px] h-full p-4 bg-custom50 bg-opacity-80
+    rounded-3xl shadow-xl border-4 border-white
     /* backdrop-blur-2xl */
     relative
   
@@ -185,33 +186,27 @@ html {
   }
 
   .no-margin {
-    @apply m-0
+    @apply m-0;
   }
 
   .knobs-container {
-    @apply
-    w-full h-[30%] mr-0 px-2 py-4
+    @apply w-full h-full mr-0 p-4
     flex flex-col justify-between items-start 
     bg-custom50 bg-opacity-50
     rounded-2xl
     shadow-md
     backdrop-blur-sm
     relative z-10
-
-    lg:w-[61.8%] lg:h-[70%] 
   }
 
   .detail-img-container {
-    @apply
-    
-    w-[61.8%]
+    @apply w-[61.8%]
     aspect-square
     bg-cover
 
     lg:fixed lg:top-0 lg:right-0 lg:transform lg:-translate-x-20
-    lg:w-[800px]
+    lg:w-[800px];
   }
-
 
   @keyframes drop-show {
     0% {
@@ -242,7 +237,7 @@ html {
     absolute top-0 left-1/2 transform -translate-x-1/2
     transition-all duration-100 ease-in-out
 
-    sm:w-[58px] sm:h-[150px] sm:py-2 
+    sm:w-[58px] sm:h-[150px] sm:py-2;
   }
 
   .drop-show {
@@ -255,18 +250,18 @@ html {
 }
 
 .tags-container {
-  @apply
-  flex flex-row 
-  mb-[5%] 
-  /* mt-[4%] */
+  @apply flex flex-row 
+  mb-[10%];
 }
 
 /* 카드 별 레벨 아이콘 */
 .tag {
   @apply w-[35px] h-[35px] mr-1 
   flex justify-center items-center
-  border border-custom700 rounded-full
+  border border-white rounded-full
+  bg-custom50
   text-base text-custom700
+  shadow-custom-green
   whitespace-nowrap
   overflow-hidden
   transition-all duration-300 ease-in-out
@@ -306,7 +301,7 @@ html {
 }
 
 .card-image {
-  @apply w-full aspect-square object-cover
+  @apply w-full aspect-square object-cover;
 }
 
 .main-line {
@@ -331,19 +326,17 @@ html {
 }
 
 .category-btn-container {
-  @apply
-  mt-2 
+  @apply mt-2 
   flex flex-row
-  md:mt-5
+  md:mt-5;
 }
 
 .arrow-box {
-  @apply w-full flex justify-center items-center
+  @apply w-full flex justify-center items-center;
 }
 
 .popup-container {
-  @apply 
-  min-w-[230px] h-[50px] mt-5 ml-2 px-8
+  @apply min-w-[230px] h-[50px] mt-5 ml-2 px-8
   border border-custom700 rounded-xl rounded-tl-none
   flex flex-row justify-between items-center
   absolute
@@ -387,18 +380,18 @@ html {
 
 .detail-icon-box {
   @apply w-full h-[30px]
-  flex justify-center items-center
+  flex justify-center items-center;
 }
 
 .card-container {
-  @apply 
-  w-full h-full
-  bg-custom50 bg-opacity-50 mt-10 rounded-b-3xl
+  @apply w-full h-full
+  border-2 border-white
+  bg-card-gradient bg-opacity-50 mt-10 rounded-b-3xl
+  shadow-lg
   /* border-t border-custom500 */
   flex flex-col 
   cursor-pointer
   overflow-hidden
-  shadow-lg
 
   hover:scale-[102%] 
 

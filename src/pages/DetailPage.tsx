@@ -10,21 +10,22 @@ const DetailPage: React.FC = () => {
 
   return (
     <div className="detail-page">
-      <div className="knobs-container ">
-        <h1 className="no-margin text-5xl">{garden.cntntsSj}</h1>
-        <div className="w-full h-auto flex justify-between items-center">
-          <CustomKnob />
-        </div>
-        <div className="arrow-box">
-          <button className="plain-button">
-            <ArrowLeft />
-          </button>
-          <button className="plain-button">
-            <ArrowRight />
-          </button>
+      <div className="w-full lg:w-[61.8%] h-auto p-4 flex flex-col justify-between border border-red-500">
+        <h1 className="no-margin text-3xl">{garden.cntntsSj}</h1>
+        <div className="knobs-container ">
+          <div className="w-full h-auto flex flex-col justify-between items-center md:flex-row">
+            <CustomKnob />
+          </div>
+          <div className="arrow-box">
+            <button className="plain-button">
+              <ArrowLeft />
+            </button>
+            <button className="plain-button">
+              <ArrowRight />
+            </button>
+          </div>
         </div>
       </div>
-
       <div className="detail-img-container">
         <img src={image} alt="profile" className="" />
       </div>
