@@ -15,11 +15,10 @@ export default function CustomKnob() {
       {detailCards.map((item, index) => (
         <div
           key={index}
-          className="w-[33%] h-full flex flex-col justify-between items-center"
+          className="w-[50%] md:w-[33%] h-auto flex flex-col justify-between items-center"
         >
-          <div className="flex flex-col justify-between items-center">
             <div className="detail-icon-box">{item.icon}</div>
-            <div className="w-[80%] aspect-square flex items-center justify-center">
+            <div className="w-[80%] my-3 aspect-square flex items-center justify-center">
               <CircularProgressbar
                 value={item.percentage}
                 text={`${item.percentage - 20}% ~ ${item.percentage}%`}
@@ -37,7 +36,7 @@ export default function CustomKnob() {
             </div>
             <span className="text-lg font-light">{item.title}</span>
             <span className="text-sm text-gray-500">{item.percentage}</span>
-          </div>
+       
         </div>
       ))}
     </>

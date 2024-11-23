@@ -162,13 +162,13 @@ html {
     bg-custom100 bg-opacity-80
     overflow-x-hidden 
 
-    lg:px-32 sm:px-8 sm:py-8;
+    lg:px-[8%] sm:px-8 sm:py-8;
   }
 
   .page-container {
     @apply 
     min-w-[280px] h-full p-4 bg-custom50 bg-opacity-80
-    rounded-3xl shadow-xl border-4 border-white
+    rounded-3xl shadow-custom-light border-4 border-white
     /* backdrop-blur-2xl */
     relative
   
@@ -190,11 +190,11 @@ html {
   }
 
   .knobs-container {
-    @apply w-full h-full mr-0 p-4
+    @apply w-full h-full mr-0 mt-5 p-4
     flex flex-col justify-between items-start 
-    bg-custom50 bg-opacity-50
+    bg-card-gradient bg-opacity-50
     rounded-2xl
-    shadow-md
+    shadow-custom-green
     backdrop-blur-sm
     relative z-10
   }
@@ -326,8 +326,10 @@ html {
 }
 
 .category-btn-container {
-  @apply mt-2 
-  flex flex-row
+  @apply w-[240px] mt-2 
+  flex flex-row justify-between
+  
+  sm:w-auto sm:justify-start
   md:mt-5;
 }
 
@@ -336,7 +338,7 @@ html {
 }
 
 .popup-container {
-  @apply min-w-[230px] h-[50px] mt-5 ml-2 px-8
+  @apply min-w-[220px] h-[50px] mt-5 mx-2 px-8
   border border-custom700 rounded-xl rounded-tl-none
   flex flex-row justify-between items-center
   absolute
@@ -385,9 +387,9 @@ html {
 
 .card-container {
   @apply w-full h-full
-  border-2 border-white
+  border-4 border-white
   bg-card-gradient bg-opacity-50 mt-10 rounded-b-3xl
-  shadow-lg
+  shadow-custom-light
   /* border-t border-custom500 */
   flex flex-col 
   cursor-pointer

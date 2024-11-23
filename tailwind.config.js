@@ -34,6 +34,7 @@ module.exports = {
       },
       boxShadow: {
         'custom-green': '2px 3px 6px rgba(55, 110, 29, 0.3)', // 초록색 그림자
+        'custom-light': '2px 3px 10px rgba(55, 110, 29, 0.3)', // 초록색 그림자
       },
 
     },

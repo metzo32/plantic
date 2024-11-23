@@ -43,7 +43,7 @@ export const getLevelIcon = (levelData: string | undefined) => {
       );
     case "전문가":
       return (
-        <div className="tag group">
+        <div className="tag hoverMd group">
           <IconWithLabel Icon={LevNum03} label="키우기 어려워요" />
         </div>
       );

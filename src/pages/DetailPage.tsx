@@ -10,10 +10,10 @@ const DetailPage: React.FC = () => {
 
   return (
     <div className="detail-page">
-      <div className="w-full lg:w-[61.8%] h-auto p-4 flex flex-col justify-between border border-red-500">
+      <div className="w-full lg:w-[61.8%] h-auto  flex flex-col justify-between">
         <h1 className="no-margin text-3xl">{garden.cntntsSj}</h1>
         <div className="knobs-container ">
-          <div className="w-full h-auto flex flex-col justify-between items-center md:flex-row">
+          <div className="w-full flex flex-col justify-between items-center md:flex-row">
             <CustomKnob />
           </div>
           <div className="arrow-box">
