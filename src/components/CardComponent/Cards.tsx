@@ -49,7 +49,7 @@ export default function Cards({
         transition={{ duration: 0.7, delay }} // delay 추가
       >
         <div className="card-container">
-          <div className="w-full h-full flex flex-col justify-between p-4">
+          <div className="card-box">
             <div className="tags-container">
               {tagLevel}
               {tagSpeed}

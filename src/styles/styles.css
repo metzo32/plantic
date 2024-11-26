@@ -137,10 +137,15 @@ html {
 
   .grid-container {
     @apply grid grid-cols-1 gap-8
-    justify-between mt-11
+    mt-11
 
     md:grid-cols-2 
     lg:grid-cols-3;
+  }
+
+  .grid-error-message {
+    @apply
+    w-full flex justify-center items-center col-span-full
   }
 }
 
@@ -190,7 +195,7 @@ html {
   }
 
   .knobs-container {
-    @apply w-full h-full mr-0 mt-5 p-4
+    @apply w-full h-full mr-0 mt-5 p-10
     flex flex-col justify-between items-start 
     bg-card-gradient bg-opacity-50
     rounded-2xl
@@ -400,6 +405,11 @@ html {
   transition-transform duration-300 ease-in-out;
 }
 
+.card-box {
+  @apply w-full h-full p-4
+  flex flex-col justify-between
+}
+
 .input-container {
   @apply w-full header-element mr-2
   flex flex-row justify-between items-center
@@ -430,4 +440,23 @@ html {
 
 .waterIcon {
   @apply w-5 h-auto mt-1;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 500ms, transform 500ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 500ms, transform 500ms;
 }
