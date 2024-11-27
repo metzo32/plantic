@@ -1,4 +1,4 @@
-// GardenList.jsx
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetchGardenList } from "./hooks/useFetch";
 import Cards from "./CardComponent/Cards";
@@ -10,9 +10,11 @@ import {
 } from "./RenderIcons";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { ArrowLoading } from "./Icons";
 
 const GardenList = () => {
   const { gardenList, loading, error, observerRef } = useFetchGardenList();
+  const [isClicked, setIsClicked] = useState(false);
 
   const searchQuery = useSelector(
     (state: RootState) => state.garden.searchQuery
@@ -24,19 +26,36 @@ const GardenList = () => {
       garden.detailInfo?.plntbneNm?.includes(searchQuery) // 영어 이름으로 필터링
   );
 
+  const handleRefresh = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
   if (loading && gardenList.length === 0) {
     return <h1 className="grid-error-message">Loading...</h1>;
   }
 
   if (error) {
-    return <h1 className="grid-error-message">Error</h1>;
+    return (
+      <div className="grid-error-message">
+        <h1>Error</h1>
+        <button
+          className={`group primary-btn ${isClicked ? "button-clicked" : ""}`}
+          onClick={handleRefresh}
+        >
+          {isClicked ? <ArrowLoading /> : "새로고침"}
+        </button>
+      </div>
+    );
   }
 
   return (
     <>
       <div className="grid-container">
         {filteredGardenList.length === 0 ? (
-            <h1 className="grid-error-message">결과가 없습니다.</h1>
+          <h1 className="grid-error-message">결과가 없습니다.</h1>
         ) : (
           filteredGardenList.map((garden, index) => {
             const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";

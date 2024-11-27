@@ -18,6 +18,7 @@ import { ReactComponent as IconWaterLarge } from "../assets/svg/icon_water.svg"
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
+import { LuRefreshCw } from "react-icons/lu";
 
 import { FaQuestion } from "react-icons/fa";
 
@@ -131,6 +132,12 @@ export function ArrowRight() {
   return (
     <IoIosArrowForward className="icon-general"/>
   );
+}
+
+export function ArrowLoading() {
+  return(
+    <LuRefreshCw className="icon-refresh"/>
+  )
 }
 
 export function QuestionMark() {

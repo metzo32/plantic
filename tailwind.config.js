@@ -37,6 +37,15 @@ module.exports = {
         'custom-light': '2px 3px 10px rgba(55, 110, 29, 0.3)', // 초록색 그림자
       },
 
+      animation: {
+        'spin-slow': 'spin 1s linear infinite', // 기본 spin보다 느리게 회전
+      },
+      keyframes: {
+        spin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+      },
     },
     
   },
