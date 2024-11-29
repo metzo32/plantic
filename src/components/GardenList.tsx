@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetchGardenList } from "./hooks/useFetch";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import Cards from "./CardComponent/Cards";
 import {
   getLevelIcon,
@@ -8,8 +10,6 @@ import {
   getLightIcon,
   getWaterIcon,
 } from "./RenderIcons";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
 import { ArrowLoading } from "./Icons";
 
 const GardenList = () => {

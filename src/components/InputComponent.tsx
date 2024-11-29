@@ -13,7 +13,7 @@ export default function InputComponent() {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    dispatch(setSearchQuery(value)); // 검색어 Redux 상태 업데이트
+    dispatch(setSearchQuery(value));
   };
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export default function InputComponent() {
     <div className={`input-container ${isFocused ? "input-focus" : ""}`}>
       <input
         type="text"
-        value={searchTerm} // 입력 값 바인딩
+        value={searchTerm} 
         placeholder="검색"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        onChange={handleSearch} // 검색어 변경 이벤트
+        onChange={handleSearch}
       />
       <button className={`text-2xl`}>
         <IoIosSearch className="text-custom500 hover:fill-green-800 " />

@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import CustomKnob from "../components/CustomKnob";
 import image from "../assets/images/plant_profile_01.png";
-import { ArrowLeft, ArrowRight } from "../components/Icons";
 
 const DetailPage = () => {
   const location = useLocation();
