@@ -13,7 +13,7 @@ export default function InputComponent() {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    dispatch(setSearchQuery(value));
+    dispatch(setSearchQuery(value)); //setSearchQuery를 꺼내와 payload 자리에 value 전달
   };
 
   useEffect(() => {

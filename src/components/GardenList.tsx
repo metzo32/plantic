@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useFetchGardenList } from "./hooks/useFetch";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { useFetchGardenList } from "./hooks/useFetch";
 import Cards from "./CardComponent/Cards";
 import {
   getLevelIcon,
@@ -17,13 +17,13 @@ const GardenList = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const searchQuery = useSelector(
-    (state: RootState) => state.garden.searchQuery
+    (state: RootState) => state.garden.searchQuery // 이 값을 가져옴 (여기서는 Input에 입력된 문자열)
   );
 
   const filteredGardenList = gardenList.filter(
     (garden) =>
       garden.cntntsSj.includes(searchQuery) || // 이름으로 필터링
-      garden.detailInfo?.plntbneNm?.includes(searchQuery) // 영어 이름으로 필터링
+      garden.detailInfo?.plntbneNm?.toLowerCase().includes(searchQuery) // 영어 이름으로 필터링
   );
 
   const handleRefresh = () => {

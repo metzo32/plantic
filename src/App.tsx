@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import "./styles/styles.css";
 import {
   BrowserRouter as Router,
@@ -15,7 +16,7 @@ import Header from "./components/Header";
 import DetailPage from "./pages/DetailPage";
 
 const AnimatedRoutes = () => {
-  const location = useLocation(); //현재 페이지 정보를 담은 객체
+  const location = useLocation(); // 현재 페이지 정보를 담은 객체
 
   return (
     <TransitionGroup>
@@ -23,11 +24,15 @@ const AnimatedRoutes = () => {
         key={location.key} // 위치 변경 시 애니메이션 트리거
         timeout={500} // 애니메이션 지속 시간
         classNames="fade" // CSS 클래스 이름
+        nodeRef={useRef(null)} // nodeRef 추가
       >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/detail/:name" element={<DetailPage />} />
-        </Routes>
+        <div ref={useRef(null)}>
+          {/* CSSTransition에서 DOM 요소를 감싸는 부모 div 추가 */}
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/detail/:name" element={<DetailPage />} />
+          </Routes>
+        </div>
       </CSSTransition>
     </TransitionGroup>
   );

@@ -340,10 +340,6 @@ html {
   md:mt-5;
 }
 
-.arrow-box {
-  @apply w-full flex justify-center items-center;
-}
-
 .popup-container {
   @apply min-w-[220px] h-[50px] mt-5 mx-2 px-8
   border border-custom700 rounded-xl rounded-tl-none
