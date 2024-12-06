@@ -102,13 +102,14 @@ export const useFetchGardenList = () => {
       { rootMargin: "200px" }
     );
 
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
+    const currentRef = observerRef.current; // 로컬 변수에 observerRef.current 저장
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (observerRef.current) {
-        observer.unobserve(observerRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [loading]);
