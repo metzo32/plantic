@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 
@@ -34,7 +34,7 @@ export const useFetchGardenList = () => {
   const [pageNo, setPageNo] = useState<number>(1);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const fetchGardenList = async () => {
+  const fetchGardenList = useCallback(async () => {
     setLoading(true);
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
@@ -86,11 +86,11 @@ export const useFetchGardenList = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [pageNo]);
 
   useEffect(() => {
     fetchGardenList();
-  }, [pageNo]);
+  }, [fetchGardenList]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
