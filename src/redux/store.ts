@@ -9,7 +9,7 @@ const gardenSlice = createSlice({
   },
   reducers: {
     //상태 변경하는 리듀서 함수 정의
-    setGardenData(state, action) {//현재상태, 액션
+    setGardenData(state, action) { //현재상태, 액션
       state.gardenData = action.payload; //action.payload = 새로운 gardenData
     },
     // setGardenData 액션 생성자:
@@ -37,7 +37,7 @@ export type RootState = ReturnType<typeof store.getState>;
 
 
 
-
+// import { createStore, combineReducers } from "redux";
 
 // //초기상태
 // const initialState = {
@@ -79,7 +79,7 @@ export type RootState = ReturnType<typeof store.getState>;
 //   }
 // };
 
-// import { createStore, combineReducers } from "redux";
+
 
 // // 여러 리듀서를 관리할 수 있도록 combineReducers 사용
 // const rootReducer = combineReducers({
