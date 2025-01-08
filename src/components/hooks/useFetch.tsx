@@ -38,11 +38,13 @@ export const useFetchGardenList = () => {
     setLoading(true);
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
+      const url = process.env.REACT_APP_PROXY_URL;
       const parser = new XMLParser();
 
       const gardenListResponse = await axios.get(
-        `https://cors-anywhere.herokuapp.com/http://api.nongsaro.go.kr/service/garden/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
+        `${url}/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
       );
+
       const gardenListJson = parser.parse(gardenListResponse.data);
       const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
 
@@ -51,14 +53,14 @@ export const useFetchGardenList = () => {
           const cntntsNo = item.cntntsNo;
 
           const gardenDetailResponse = await axios.get(
-            `https://cors-anywhere.herokuapp.com/http://api.nongsaro.go.kr/service/garden/gardenDtl?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+            `${url}/gardenDtl?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
           );
           const gardenDetailJson = parser.parse(gardenDetailResponse.data);
           const detailInfo: DetailInfoProps =
             gardenDetailJson?.response?.body?.item || {};
 
           const gardenFileListResponse = await axios.get(
-            `https://cors-anywhere.herokuapp.com/http://api.nongsaro.go.kr/service/garden/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
+            `${url}/gardenFileList?apiKey=${apiKey}&cntntsNo=${cntntsNo}`
           );
           const gardenFileListJson = parser.parse(gardenFileListResponse.data);
           let fileList: FileItemProps[] =
