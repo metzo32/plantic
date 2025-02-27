@@ -16,7 +16,7 @@
     "d3-ease": "^3.0.1",
     "fast-xml-parser": "^4.5.0",
     "framer-motion": "^11.11.17",
-    "msw": "^2.7.0",
+    "msw": "^2.7.3",
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.3.1",

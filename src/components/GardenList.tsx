@@ -59,7 +59,6 @@ const GardenList = () => {
         ) : (
           filteredGardenList.map((garden, index) => {
             const firstImageUrl = garden.fileList?.[0]?.rtnFileUrl || "";
-
             const level = getLevelIcon(garden.detailInfo?.managelevelCodeNm);
             const speed = getSpeedIcon(garden.detailInfo?.grwtveCodeNm);
             const light = getLightIcon(
@@ -98,7 +97,8 @@ const GardenList = () => {
           })
         )}
       </div>
-      <div ref={observerRef} />
+
+      <div ref={observerRef} className="w-full h-[10px]"/>
     </>
   );
 };

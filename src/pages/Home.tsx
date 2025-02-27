@@ -1,4 +1,3 @@
-
 import GardenList from "../components/GardenList";
 import CategoryButtons from "../components/CategoryButtons";
 
@@ -10,7 +9,7 @@ export default function Home() {
       <hr className="sub-line" />
       <CategoryButtons />
 
-      <div className="flex w-full justify-center">
+      <div className="flex flex-col w-full justify-center">
         <GardenList />
       </div>
     </div>

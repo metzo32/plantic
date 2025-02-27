@@ -29,24 +29,36 @@ export interface GardenItemProps {
 
 export const useFetchGardenList = () => {
   const [gardenList, setGardenList] = useState<GardenItemProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [pageNo, setPageNo] = useState<number>(1);
+  const [hasMore, setHasMore] = useState<boolean>(true);
   const observerRef = useRef<HTMLDivElement | null>(null);
+  const observer = useRef<IntersectionObserver | null>(null);
+  const isFetching = useRef(false); // ✅ 중복 요청 방지
 
   const fetchGardenList = useCallback(async () => {
+    if (loading || !hasMore || isFetching.current) return;
+    isFetching.current = true; // ✅ 요청 시작
     setLoading(true);
+
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
       const url = process.env.REACT_APP_PROXY_URL;
       const parser = new XMLParser();
 
+      // ✅ API 요청 (한 번에 9개씩)
       const gardenListResponse = await axios.get(
-        `${url}/gardenList?apiKey=${apiKey}&numOfRows=15&pageNo=${pageNo}`
+        `${url}/gardenList?apiKey=${apiKey}&numOfRows=9&pageNo=${pageNo}`
       );
 
       const gardenListJson = parser.parse(gardenListResponse.data);
       const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
+
+      if (gardenListItems.length === 0) {
+        setHasMore(false); // ✅ 더 이상 데이터가 없으면 요청 중단
+        return;
+      }
 
       const detailedItems: GardenItemProps[] = await Promise.all(
         gardenListItems.map(async (item: any) => {
@@ -81,39 +93,36 @@ export const useFetchGardenList = () => {
         );
         return [...prev, ...uniqueItems];
       });
+
+      setPageNo((prev) => prev + 1); // ✅ 다음 페이지 증가
     } catch (error) {
       console.error("Error fetching garden list:", error);
       setError("데이터를 가져오는 도중 오류가 발생했습니다.");
+      setHasMore(false);
     } finally {
       setLoading(false);
+      isFetching.current = false; // ✅ 요청 완료 후 해제
     }
-  }, [pageNo]);
+  }, [pageNo, hasMore, loading]);
 
   useEffect(() => {
-    fetchGardenList();
-  }, [fetchGardenList]);
+    if (!observerRef.current || !hasMore) return;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
+    observer.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !loading) {
-          setPageNo((prev) => prev + 1);
+        if (entries[0].isIntersecting && !loading && hasMore) {
+          fetchGardenList();
         }
       },
-      { rootMargin: "200px" }
+      { threshold: 1.0 }
     );
 
-    const currentRef = observerRef.current; // 로컬 변수에 observerRef.current 저장
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.current.observe(observerRef.current);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      if (observer.current) observer.current.disconnect();
     };
-  }, [loading]);
+  }, [fetchGardenList, loading, hasMore]);
 
   return { gardenList, loading, error, observerRef };
 };
