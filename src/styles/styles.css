@@ -61,7 +61,7 @@ html {
 
   h4 {
     @apply text-gray-500
-    font-thin
+    font-medium
     text-sm
     mt-[3%];
   }

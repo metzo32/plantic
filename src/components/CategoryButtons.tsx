@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Triangle from "./Triangle";
 
 export default function CategoryButtons() {
   const [selected, setSelected] = useState<number | null>(null);
@@ -73,7 +72,6 @@ export default function CategoryButtons() {
             key={animationKey} // React가 DOM을 다시 렌더링하도록 강제
             className="popup-container"
           >
-            <Triangle />
             {renderContentButtons(contentOptions[selected])}
           </div>
         )}

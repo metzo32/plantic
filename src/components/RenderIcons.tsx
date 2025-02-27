@@ -28,24 +28,31 @@ const IconWithLabel = ({ Icon, label }: IconProps) => (
 );
 
 export const getLevelIcon = (levelData: string | undefined) => {
+  const handleinfoLevel = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+    console.log("난이도")
+  }
+
+
   switch (levelData) {
     case "초보자":
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoLevel}>
           <IconWithLabel Icon={LevNum01} label="키우기 쉬워요" />
-        </div>
+        </button>
       );
     case "경험자":
       return (
-        <div className="tag hoverSm group">
+        <button className="tag hoverSm group" onClick={handleinfoLevel}>
           <IconWithLabel Icon={LevNum02} label="키울만 해요" />
-        </div>
+        </button>
       );
     case "전문가":
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoLevel}>
           <IconWithLabel Icon={LevNum03} label="키우기 어려워요" />
-        </div>
+        </button>
       );
     default:
       return null;
@@ -53,24 +60,31 @@ export const getLevelIcon = (levelData: string | undefined) => {
 };
 
 export const getSpeedIcon = (speedData: string | undefined) => {
+  const handleinfoSpeed = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+    console.log("성장속도")
+  }
+
+
   switch (speedData) {
     case "느림":
       return (
-        <div className="tag hoverSm group">
+        <button className="tag hoverSm group" onClick={handleinfoSpeed}>
           <IconWithLabel Icon={LevTime01} label="금방 자라요" />
-        </div>
+        </button>
       );
     case "보통":
       return (
-        <div className="tag hoverSm group">
+        <button className="tag hoverSm group" onClick={handleinfoSpeed}>
           <IconWithLabel Icon={LevTime02} label="곧 자라요" />
-        </div>
+        </button>
       );
     case "빠름":
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoSpeed}>
           <IconWithLabel Icon={LevTime03} label="시간이 걸려요" />
-        </div>
+        </button>
       );
     default:
       return null;
@@ -78,24 +92,31 @@ export const getSpeedIcon = (speedData: string | undefined) => {
 };
 
 export const getLightIcon = (lightData: string | undefined) => {
+  const handleinfoLight = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+    console.log("광도")
+  }
+
+
   switch (lightData) {
     case "낮은":
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoLight}>
           <IconWithLabel Icon={LevLight01} label="그늘도 좋아요" />
-        </div>
+        </button>
       );
     case "중간":
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoLight}>
           <IconWithLabel Icon={LevLight02} label="햇볕이 필요해요" />
-        </div>
+        </button>
       );
     case "높은":
       return (
-        <div className="tag hoverLg group">
+        <button className="tag hoverLg group" onClick={handleinfoLight}>
           <IconWithLabel Icon={LevLight03} label="햇볕이 많이 필요해요" />
-        </div>
+        </button>
       );
     default:
       return null;
@@ -103,30 +124,36 @@ export const getLightIcon = (lightData: string | undefined) => {
 };
 
 export const getWaterIcon = (waterData: number | undefined) => {
+  const handleinfoWater = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+    console.log("물주기")
+  }
+
   switch (waterData) {
     case 53001:
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoWater}>
           <IconWithLabel Icon={LevWater01} label="물을 매일 줘요" />
-        </div>
+        </button>
       );
     case 53002:
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoWater}>
           <IconWithLabel Icon={LevWater02} label="물을 자주 줘요" />
-        </div>
+        </button>
       );
     case 53003:
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoWater}>
           <IconWithLabel Icon={LevWater03} label="물을 가끔 줘요" />
-        </div>
+        </button>
       );
     case 53004:
       return (
-        <div className="tag hoverMd group">
+        <button className="tag hoverMd group" onClick={handleinfoWater}>
           <IconWithLabel Icon={LevWater04} label="물을 드물게 줘요" />
-        </div>
+        </button>
       );
     default:
       return null;

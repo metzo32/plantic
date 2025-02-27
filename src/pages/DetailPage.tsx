@@ -47,34 +47,8 @@ const DetailPage = () => {
               humidity={humidity}
             />
           </div>
-          {/* <div className="arrow-box">
-            <button className="plain-button">
-              <ArrowLeft />
-            </button>
-            <button className="plain-button">
-              <ArrowRight />
-            </button>
-          </div> */}
         </div>
       </div>
-      {/* <div className="detail-img-container">
-        <img src={image} alt="profile" className="" />
-      </div> */}
-      {/* <img
-        src={garden.imgUrl}
-        alt={garden.plantGnrlNm}
-        className="detail-img"
-      />
-     <h1>{garden.cntntsSj}</h1>
-      <p>과명: {garden.familyKorNm}</p>
-      <p>일반명: {garden.plantGnrlNm}</p>
-      <p>관리 수준: {garden.detailInfo?.managelevelCodeNm}</p>
-      <p>성장 속도: {garden.detailInfo?.grwtveCodeNm}</p>
-      <p>빛 요구량: {garden.detailInfo?.lighttdemanddoCodeNm}</p>
-      <p>여름 물 주기: {garden.detailInfo?.watercycleSummerCodeNm}</p>
-
-      <p>습도 코드명: {garden.detailInfo?.hdCodeNm}</p>
-      <img src={garden.imgUrl} alt={garden.plantGnrlNm} className="card-image" /> */}
     </div>
   );
 };
