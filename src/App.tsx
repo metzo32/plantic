@@ -27,7 +27,6 @@ const AnimatedRoutes = () => {
         nodeRef={useRef(null)} // nodeRef 추가
       >
         <div ref={useRef(null)}>
-          {/* CSSTransition에서 DOM 요소를 감싸는 부모 div 추가 */}
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:name" element={<DetailPage />} />

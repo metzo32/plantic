@@ -34,10 +34,10 @@ const DetailPage = () => {
   
   return (
     <div className="detail-page">
-      <div className="w-full lg:w-[61.8%] h-auto  flex flex-col justify-between">
-        <h1 className="no-margin text-3xl">{garden.cntntsSj}</h1>
-        <div className="knobs-container ">
-          <div className="w-full flex flex-col justify-between items-center md:flex-row">
+      <div className="w-[90%] flex flex-col justify-between">
+        <h1 className="no-margin text-xl md:text-3xl">{garden.cntntsSj}</h1>
+        <div className="knobs-container">
+          <div className="w-full flex flex-col justify-between items-center md:flex-row gap-5">
             <CustomKnob
               tempText={tempText}
               temp={temp}

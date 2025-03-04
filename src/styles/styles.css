@@ -184,12 +184,9 @@ html {
   }
 
   .detail-page {
-    @apply w-full h-screen mt-5
+    @apply w-full h-full mt-5
     flex flex-col-reverse justify-end items-center
-
     sm:mt-10
-
-    lg:flex-row lg:h-[89%] lg:justify-between;
   }
 
   .no-margin {
@@ -328,8 +325,6 @@ html {
     border-t
     border-custom700
     relative
-  
-    md:hidden;
 }
 
 .category-btn-container {

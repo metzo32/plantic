@@ -33,7 +33,7 @@ export default function CustomKnob({
           className="w-[50%] md:w-[33%] h-auto flex flex-col justify-between items-center"
         >
           <div className="detail-icon-box">{item.icon}</div>
-          <div className="w-[80%] my-3 aspect-square flex items-center justify-center">
+          <div className="w-full md:w-[80%] my-3 aspect-square flex items-center justify-center">
             <CircularProgressbar
               value={item.percentage}
               text={item.text}

@@ -34,7 +34,7 @@ const GardenList = () => {
   };
 
   if (loading && gardenList.length === 0) {
-    return <h1 className="grid-error-message">Loading...</h1>;
+    return <h1 className="grid-error-message mt-20">Loading...</h1>;
   }
 
   if (error) {
