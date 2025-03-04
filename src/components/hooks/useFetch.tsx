@@ -32,14 +32,11 @@ export const useFetchGardenList = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [pageNo, setPageNo] = useState<number>(1);
-  const [hasMore, setHasMore] = useState<boolean>(true);
   const observerRef = useRef<HTMLDivElement | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
-  const isFetching = useRef(false); // ✅ 중복 요청 방지
 
   const fetchGardenList = useCallback(async () => {
-    if (loading || !hasMore || isFetching.current) return;
-    isFetching.current = true; // ✅ 요청 시작
+    if (loading ) return;
     setLoading(true);
 
     try {
@@ -47,7 +44,6 @@ export const useFetchGardenList = () => {
       const url = process.env.REACT_APP_PROXY_URL;
       const parser = new XMLParser();
 
-      // ✅ API 요청 (한 번에 9개씩)
       const gardenListResponse = await axios.get(
         `${url}/gardenList?apiKey=${apiKey}&numOfRows=9&pageNo=${pageNo}`
       );
@@ -55,8 +51,7 @@ export const useFetchGardenList = () => {
       const gardenListJson = parser.parse(gardenListResponse.data);
       const gardenListItems = gardenListJson?.response?.body?.items?.item || [];
 
-      if (gardenListItems.length === 0) {
-        setHasMore(false); // ✅ 더 이상 데이터가 없으면 요청 중단
+      if (gardenListItems.length === 0) { //더이상 불러올 데이터가 없는 경우
         return;
       }
 
@@ -94,23 +89,21 @@ export const useFetchGardenList = () => {
         return [...prev, ...uniqueItems];
       });
 
-      setPageNo((prev) => prev + 1); // ✅ 다음 페이지 증가
+      setPageNo((prev) => prev + 1); 
     } catch (error) {
       console.error("Error fetching garden list:", error);
       setError("데이터를 가져오는 도중 오류가 발생했습니다.");
-      setHasMore(false);
     } finally {
       setLoading(false);
-      isFetching.current = false; // ✅ 요청 완료 후 해제
     }
-  }, [pageNo, hasMore, loading]);
+  }, [pageNo, loading]);
 
   useEffect(() => {
-    if (!observerRef.current || !hasMore) return;
+    if (!observerRef.current ) return;
 
     observer.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !loading && hasMore) {
+        if (entries[0].isIntersecting && !loading ) {
           fetchGardenList();
         }
       },
@@ -122,7 +115,7 @@ export const useFetchGardenList = () => {
     return () => {
       if (observer.current) observer.current.disconnect();
     };
-  }, [fetchGardenList, loading, hasMore]);
+  }, [fetchGardenList, loading]);
 
   return { gardenList, loading, error, observerRef };
 };
