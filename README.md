@@ -31,12 +31,4 @@
 
 시연 영상
 
-![마우스이벤트](./public/demo_gif/plantic_hover.gif)
-
-![무한스크롤](./public/demo_gif/plantic_무한스크롤.gif)
-
-![반응형](./public/demo_gif/plantic_반응형.gif)
-
-![상세페이지](./public/demo_gif/plantic_상세페이지.gif)
-
 ![검색](./public/demo_gif/plantic_검색.gif)
