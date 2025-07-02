@@ -20,7 +20,7 @@
 ### 핵심 기능
 
 - 반응형 웹 디자인
-  ![시연](./public/demo_gif/plantic_반응형.gif)
+
 - 공공 API를 활용한 데이터 페칭
 - useRef를 통한 무한 스크롤
 - SPA를 기반으로 컴포넌트 동적 렌더링 구현
@@ -29,5 +29,4 @@
 
 ---
 
-
-
+![시연](./public/demo_gif/plantic_반응형.gif)
