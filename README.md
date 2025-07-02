@@ -19,14 +19,24 @@
 
 ### 핵심 기능
 
-- 반응형 웹 디자인
-![반응형](./public/demo_gif/plantic_반응형.gif)
 - 공공 API를 활용한 데이터 페칭
 - useRef를 통한 무한 스크롤
+- 반응형 웹 디자인
 - SPA를 기반으로 컴포넌트 동적 렌더링 구현
+- filter 메서드를 통해 간단한 검색 기능 구현
 - cors-anywhere 라이브러리를 사용하여 개발 환경 한정 CORS error 극복
 
 
 ---
 
+시연 영상
 
+![마우스이벤트](./public/demo_gif/plantic_hover.gif)
+
+![무한스크롤](./public/demo_gif/plantic_무한스크롤.gif)
+
+![반응형](./public/demo_gif/plantic_반응형.gif)
+
+![상세페이지](./public/demo_gif/plantic_상세페이지.gif)
+
+![검색](./public/demo_gif/plantic_검색.gif)
