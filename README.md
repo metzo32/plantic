@@ -31,4 +31,4 @@
 
 시연 영상
 
-![검색](./public/demo_gif/plantic_demo.gif)
+![시연](./public/demo_gif/plantic_demo.gif)
